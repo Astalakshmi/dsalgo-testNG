@@ -86,6 +86,46 @@ public class DataProviders {
 		validLoginData[0][2]=xlutil.getCellData("LoginCredentials", 1, 2);
 		return validLoginData;
 	}
+	
+//	@DataProvider(name = "LoginAndCheckTopicLinkedList")
+//	public Object[][] getLoginAndTopicCheck() throws IOException {
+//		
+//		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+//		int totalrowsinTopicSheet=xlutil.getRowCount("Topics");
+//		int totalcolsinTopicSheet=3;
+//		Object[][] loginAndTopicData=new Object[totalrowsinTopicSheet][totalcolsinTopicSheet];
+//		for(int i=1;i<=totalrowsinTopicSheet;i++) {				
+//			//for(int j=0;j<1;j++) {
+//				loginAndTopicData[i-1][0]=xlutil.getCellData("Topics", i, 0);
+//				loginAndTopicData[i-1][1]=xlutil.getCellData("LoginCredentials", 1, 0);
+//				loginAndTopicData[i-1][2]=xlutil.getCellData("LoginCredentials", 1, 1);//[i-2][j] so that [0][0]
+//			//}
+//		}
+//		
+//		System.out.println(Arrays.deepToString(loginAndTopicData));
+//		return loginAndTopicData;
+//		
+//	}
+//	@DataProvider(name = "LoginAndCheckTopicLinkedList")
+//	public Object[][] getLoginAndTopicCheck() throws IOException {
+//		
+//		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+//		int totalrowsinTopicSheet=xlutil.getRowCount("LinkedListTopics");
+//		int totalcols=4;
+//		Object[][] loginAndTopicData=new Object[totalrowsinTopicSheet][totalcols];
+//		for(int i=1;i<=totalrowsinTopicSheet;i++) {				
+//			//for(int j=0;j<1;j++) {
+//				loginAndTopicData[i-1][0]=xlutil.getCellData("LinkedListTopics", i, 0);
+//				loginAndTopicData[i-1][1]=xlutil.getCellData("LinkedListTopics", i, 1);
+//				loginAndTopicData[i-1][2]=xlutil.getCellData("LoginCredentials", 1, 0);
+//				loginAndTopicData[i-1][3]=xlutil.getCellData("LoginCredentials", 1, 1);//[i-2][j] so that [0][0]
+//			//}
+//		}
+//		
+//		System.out.println(Arrays.deepToString(loginAndTopicData));
+//		return loginAndTopicData;
+//		
+//	}
 
 }
 
