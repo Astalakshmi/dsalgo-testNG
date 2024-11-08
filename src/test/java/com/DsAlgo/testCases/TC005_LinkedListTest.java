@@ -36,7 +36,7 @@ private LinkedListPage linkedlistObject;
 
 	
 	@Test(priority = 2, dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
-	public void testIntroductionLink(String link,String expectedTitle, String userName, String password) {
+	public void testTopicsLink(String link,String expectedTitle, String userName, String password) {
 		linkedlistObject= new LinkedListPage(driver);
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();

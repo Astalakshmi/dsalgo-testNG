@@ -1,8 +1,14 @@
 package com.DsAlgo.utilities;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.testng.annotations.DataProvider;
+import org.testng.collections.Lists;
+
+
 
 public class DataProviders {
 
@@ -78,14 +84,59 @@ public class DataProviders {
 	}
 
 	@DataProvider(name = "ValidLoginData")
-	public String[][] getValidLoginData() throws IOException {
+	public Object[][] getValidLoginData() throws IOException {
 		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
-		String[][] validLoginData = new String[1][3];
+		Object[][] validLoginData = new Object[1][3];
 		validLoginData[0][0]=xlutil.getCellData("LoginCredentials", 1, 0);
 		validLoginData[0][1]=xlutil.getCellData("LoginCredentials", 1, 1);
 		validLoginData[0][2]=xlutil.getCellData("LoginCredentials", 1, 2);
 		return validLoginData;
 	}
+	
+	
+// -----------------Linked list topics------------------------
+	
+	@DataProvider(name= "Topics")
+	public Object[][] gettopicValue() throws IOException {
+		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+		int totalrows = xlutil.getRowCount("Topics");
+		System.out.println("total rows "+totalrows);
+		//int totalcols = xlutil.getCellCount("Topics", 1);
+		Object[][] topicsData = new Object[totalrows][1];
+		for (int i = 1; i <= totalrows; i++) {
+			//System.out.println("wwwwww "+i);
+			for (int j = 0; j < 1; j++) {
+				//System.out.println("wwwwww "+i+j+ xlutil.getCellData("Topics", i, j));
+				topicsData[i-1][j] = xlutil.getCellData("Topics", i, j);
+			}
+		}
+		System.out.println(Arrays.deepToString(topicsData));
+		return topicsData;
+	}
+	
+	
+	@DataProvider(name = "LoginAndCheckTopicLinkedList")
+	public Object[][] getLoginAndTopicCheck() throws IOException {
+		
+		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+		int totalrowsinTopicSheet=xlutil.getRowCount("LinkedListTopics");
+		int totalcols=4;
+		Object[][] loginAndTopicData=new Object[totalrowsinTopicSheet][totalcols];
+		for(int i=1;i<=totalrowsinTopicSheet;i++) {				
+			//for(int j=0;j<1;j++) {
+				loginAndTopicData[i-1][0]=xlutil.getCellData("LinkedListTopics", i, 0);
+				loginAndTopicData[i-1][1]=xlutil.getCellData("LinkedListTopics", i, 1);
+				loginAndTopicData[i-1][2]=xlutil.getCellData("LoginCredentials", 1, 0);
+				loginAndTopicData[i-1][3]=xlutil.getCellData("LoginCredentials", 1, 1);//[i-2][j] so that [0][0]
+			//}
+		}
+		
+		System.out.println(Arrays.deepToString(loginAndTopicData));
+		return loginAndTopicData;
+		
+	}
+	
+	
 
 }
 
