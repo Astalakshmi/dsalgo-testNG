@@ -124,10 +124,11 @@ public class DataProviders {
 		Object[][] loginAndTopicData=new Object[totalrowsinTopicSheet][totalcols];
 		for(int i=1;i<=totalrowsinTopicSheet;i++) {				
 			//for(int j=0;j<1;j++) {
-				loginAndTopicData[i-1][0]=xlutil.getCellData("LinkedListTopics", i, 0);
-				loginAndTopicData[i-1][1]=xlutil.getCellData("LinkedListTopics", i, 1);
-				loginAndTopicData[i-1][2]=xlutil.getCellData("LoginCredentials", 1, 0);
-				loginAndTopicData[i-1][3]=xlutil.getCellData("LoginCredentials", 1, 1);//[i-2][j] so that [0][0]
+			    loginAndTopicData[i-1][0]=xlutil.getCellData("LoginCredentials", 1, 0);
+			    loginAndTopicData[i-1][1]=xlutil.getCellData("LoginCredentials", 1, 1);
+				loginAndTopicData[i-1][2]=xlutil.getCellData("LinkedListTopics", i, 0);
+				loginAndTopicData[i-1][3]=xlutil.getCellData("LinkedListTopics", i, 1);
+				
 			//}
 		}
 		
