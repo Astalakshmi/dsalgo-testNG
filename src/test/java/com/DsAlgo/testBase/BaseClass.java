@@ -44,14 +44,14 @@ public class BaseClass {
 	    public void tearDown(ITestResult result) {
 	        if (result.getStatus() == ITestResult.FAILURE) {
 	            // Take a screenshot if the test failed
-	       //     final byte[] screenshot = ((TakesScreenshot) WebdriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
+	           final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	            // Attach the screenshot to the report (optional)
 	            // Use any reporting framework to attach the screenshot, such as Allure or ExtentReports
 	            System.out.println("Test failed: " + result.getName());
 	            // Save or log the screenshot here if needed
 	        }
 	      
-	        driver.quit();
+	       driver.quit();
 	    }
 
 	
