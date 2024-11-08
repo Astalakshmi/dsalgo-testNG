@@ -11,7 +11,7 @@ import com.DsAlgo.testBase.BaseClass;import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.LoggerLoad;
 
 
-public class TC003_LinkedListTest extends BaseClass {
+public class TC005_LinkedListTest extends BaseClass {
 private LinkedListPage linkedlistObject;
 	
 	
