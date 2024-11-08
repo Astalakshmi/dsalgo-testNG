@@ -11,10 +11,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage{
+
+import com.DsAlgo.utilities.CommonUtils;
+
+
+
+public class HomePage {
 	
     WebDriver driver;
-
+    
+    CommonUtils utilsObj = CommonUtils.getInstance();
 				//constructor
 	public HomePage(WebDriver driver)
 	{
@@ -93,11 +99,15 @@ public class HomePage{
 	
 	public void getStartedhomeclick() {
 		getStartedhome.click();
+		
+		
 	}
 
 	public void getStartedhomeclickwithoutlogin() {
-		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
+		utilsObj.expliciwait(getStartedhome);
+		getStartedhome.click();
+//		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
 		
 	}
 

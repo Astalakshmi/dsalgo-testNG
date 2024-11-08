@@ -6,7 +6,10 @@
   	<parameter name="browser" value="CHROME"></parameter>
     <classes>
       
-      <class name="com.DsAlgo.testCases.TC001_RegisterTest"/>
+    
+     <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
+       <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
+      
          
     </classes>
   </test> <!-- Test -->
