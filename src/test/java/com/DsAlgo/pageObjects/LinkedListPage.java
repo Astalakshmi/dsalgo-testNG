@@ -17,10 +17,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.DsAlgo.testBase.BaseClass;
 import com.DsAlgo.utilities.CommonUtils;
 
 
-public class LinkedListPage {
+public class LinkedListPage extends BaseClass {
 	  WebDriver driver;
 	 CommonUtils utilsObj = CommonUtils.getInstance();
     
@@ -193,6 +194,7 @@ public class LinkedListPage {
 		}
 
 		public LinkedListPage(WebDriver driver) {
+			//this.driver = driver;
 			PageFactory.initElements(driver, this);
 		}
 

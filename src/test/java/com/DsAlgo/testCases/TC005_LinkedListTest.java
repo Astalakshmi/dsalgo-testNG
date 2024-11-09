@@ -50,7 +50,7 @@ private LinkedListPage linkedlistObject;
 	}
 
 	
-	@Test(priority = 2, dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
+	@Test( dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
 	public void testTopicsLink(String userName, String password,String link,String expectedTitle ) {
 
 		linkedlistObject.clickTopicLink(link);
@@ -58,23 +58,41 @@ private LinkedListPage linkedlistObject;
 		Assert.assertEquals(actualTitle,expectedTitle);
 	}
 	
-	@Test(priority = 3, dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
-	public void testTryherePage(String userName, String password, String link,String expectedTitle ) {
-
-		linkedlistObject.clickTopicLink(link);
-		linkedlistObject.clicktryEditor();
-		String actualTitle = driver.getTitle();
-		Assert.assertEquals(actualTitle,"Assessment");
-	}
-	
-//	@Test(priority = 3, dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
-//	public void testTryEditor(String userName, String password, String link,String expectedTitle) {
-//		
+//	@Test( dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
+//	public void testTryherePage(String userName, String password, String link,String expectedTitle ) {
+//
 //		linkedlistObject.clickTopicLink(link);
 //		linkedlistObject.clicktryEditor();
-//		
+//		String actualTitle = driver.getTitle();
+//		Assert.assertEquals(actualTitle,"Assessment");
 //	}
 	
+	@Test( dataProvider ="ValidTryEditorInput", dataProviderClass = DataProviders.class)
+	public void testTryEditorValid(String userName, String password, String link,String code, String expectedOutput) {
+		LoggerLoad.info(userName+" "+password+" "+link+" "+code+" "+expectedOutput);
+		linkedlistObject.clickTopicLink(link);
+		linkedlistObject.clicktryEditor();
+		linkedlistObject.setCodePositive(code);
+		linkedlistObject.clickRunBtn();
+		Assert.assertEquals(linkedlistObject.getOutput(), expectedOutput);
+		
+	}
+	
+//	@Test( dataProvider ="InvalidTryEditorInput", dataProviderClass = DataProviders.class)
+//	public void testTryEditorInvalid(String userName, String password, String link,String code, String expectedError) {
+//		LoggerLoad.info(userName+" "+password+" "+link+" "+code+" "+expectedError);
+//		linkedlistObject.clickTopicLink(link);
+//		linkedlistObject.clicktryEditor();
+//		linkedlistObject.setCodePositive(code);
+//		linkedlistObject.clickRunBtn();
+//		//driver.switchTo().alert();
+//		String actualError = driver.switchTo().alert().getText();
+//		driver.switchTo().alert().accept();
+//		Assert.assertEquals(actualError, expectedError);
+//		
+//	}
+//	
+//	
 	
 
 	

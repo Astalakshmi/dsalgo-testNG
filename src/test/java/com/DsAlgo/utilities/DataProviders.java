@@ -94,26 +94,6 @@ public class DataProviders {
 	}
 	
 	
-// -----------------Linked list topics------------------------
-	
-	@DataProvider(name= "Topics")
-	public Object[][] gettopicValue() throws IOException {
-		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
-		int totalrows = xlutil.getRowCount("Topics");
-		System.out.println("total rows "+totalrows);
-		//int totalcols = xlutil.getCellCount("Topics", 1);
-		Object[][] topicsData = new Object[totalrows][1];
-		for (int i = 1; i <= totalrows; i++) {
-			//System.out.println("wwwwww "+i);
-			for (int j = 0; j < 1; j++) {
-				//System.out.println("wwwwww "+i+j+ xlutil.getCellData("Topics", i, j));
-				topicsData[i-1][j] = xlutil.getCellData("Topics", i, j);
-			}
-		}
-		System.out.println(Arrays.deepToString(topicsData));
-		return topicsData;
-	}
-	
 	
 	@DataProvider(name = "LoginAndCheckTopicLinkedList")
 	public Object[][] getLoginAndTopicCheck() throws IOException {
@@ -124,10 +104,10 @@ public class DataProviders {
 		Object[][] loginAndTopicData=new Object[totalrowsinTopicSheet][totalcols];
 		for(int i=1;i<=totalrowsinTopicSheet;i++) {				
 			//for(int j=0;j<1;j++) {
-			    loginAndTopicData[i-1][0]=xlutil.getCellData("LoginCredentials", 1, 0);
-			    loginAndTopicData[i-1][1]=xlutil.getCellData("LoginCredentials", 1, 1);
-				loginAndTopicData[i-1][2]=xlutil.getCellData("LinkedListTopics", i, 0);
-				loginAndTopicData[i-1][3]=xlutil.getCellData("LinkedListTopics", i, 1);
+			    loginAndTopicData[i-1][0]=xlutil.getCellData("LoginCredentials", 1, 0); // username
+			    loginAndTopicData[i-1][1]=xlutil.getCellData("LoginCredentials", 1, 1); // password
+				loginAndTopicData[i-1][2]=xlutil.getCellData("LinkedListTopics", i, 0); // topic link
+				loginAndTopicData[i-1][3]=xlutil.getCellData("LinkedListTopics", i, 1); //expected title
 				
 			//}
 		}
@@ -135,6 +115,53 @@ public class DataProviders {
 		System.out.println(Arrays.deepToString(loginAndTopicData));
 		return loginAndTopicData;
 		
+	}
+	
+	@DataProvider(name="ValidTryEditorInput")
+	public Object[][] getLoginandPythonOutput() throws IOException{
+		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+		int rowsinTopicSheet=xlutil.getRowCount("LinkedListTopics");
+		int rowsPositiveinput=2; //only for positive input
+		int newArrcols=5; // total columns needed to return
+		int newArrRow = rowsinTopicSheet * rowsPositiveinput ;
+		Object[][] loginAndPythonData=new Object[newArrRow][newArrcols];
+		int k=0;
+		for(int i=1;i<=rowsinTopicSheet;i++) {				
+			for(int j=1;j<=rowsPositiveinput;j++) {
+			loginAndPythonData[k][0]=xlutil.getCellData("LoginCredentials", 1, 0); // username
+			loginAndPythonData[k][1]=xlutil.getCellData("LoginCredentials", 1, 1); //password
+			loginAndPythonData[k][2]=xlutil.getCellData("LinkedListTopics", i, 0); //topic link
+			loginAndPythonData[k][3]=xlutil.getCellData("TryEditor", j, 0); //code
+			loginAndPythonData[k][4]=xlutil.getCellData("TryEditor", j, 1); //output
+				k++;
+			}
+		}
+		System.out.println(Arrays.deepToString(loginAndPythonData));
+		return loginAndPythonData;
+	}
+	
+	@DataProvider(name="InvalidTryEditorInput")
+	public Object[][] getLoginandPythonError() throws IOException{
+		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
+		int rowsinTopicSheet=xlutil.getRowCount("LinkedListTopics");
+		int rowsPositiveinput=2;
+		int rowsNegativeinput=2; // for negative input
+		int newArrcols=5; // total columns needed to return
+		int newArrRow = rowsinTopicSheet * rowsNegativeinput ;
+		Object[][] loginAndPythonData=new Object[newArrRow][newArrcols];
+		int k=0;
+		for(int i=1;i<=rowsinTopicSheet;i++) {				
+			for(int j=3;j<=(rowsPositiveinput+rowsNegativeinput);j++) {
+			loginAndPythonData[k][0]=xlutil.getCellData("LoginCredentials", 1, 0); // username
+			loginAndPythonData[k][1]=xlutil.getCellData("LoginCredentials", 1, 1); //password
+			loginAndPythonData[k][2]=xlutil.getCellData("LinkedListTopics", i, 0); //topic link
+			loginAndPythonData[k][3]=xlutil.getCellData("TryEditor", j, 0); //code
+			loginAndPythonData[k][4]=xlutil.getCellData("TryEditor", j, 1); //output
+				k++;
+			}
+		}
+		System.out.println(Arrays.deepToString(loginAndPythonData));
+		return loginAndPythonData;
 	}
 	
 	
