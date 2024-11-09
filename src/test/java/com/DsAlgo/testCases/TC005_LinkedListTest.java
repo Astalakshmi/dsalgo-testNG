@@ -58,14 +58,14 @@ private LinkedListPage linkedlistObject;
 		Assert.assertEquals(actualTitle,expectedTitle);
 	}
 	
-//	@Test( dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
-//	public void testTryherePage(String userName, String password, String link,String expectedTitle ) {
-//
-//		linkedlistObject.clickTopicLink(link);
-//		linkedlistObject.clicktryEditor();
-//		String actualTitle = driver.getTitle();
-//		Assert.assertEquals(actualTitle,"Assessment");
-//	}
+	@Test( dataProvider ="LoginAndCheckTopicLinkedList", dataProviderClass = DataProviders.class)
+	public void testTryherePage(String userName, String password, String link,String expectedTitle ) {
+
+		linkedlistObject.clickTopicLink(link);
+		linkedlistObject.clicktryEditor();
+		String actualTitle = driver.getTitle();
+		Assert.assertEquals(actualTitle,"Assessment");
+	}
 	
 	@Test( dataProvider ="ValidTryEditorInput", dataProviderClass = DataProviders.class)
 	public void testTryEditorValid(String userName, String password, String link,String code, String expectedOutput) {
@@ -78,21 +78,21 @@ private LinkedListPage linkedlistObject;
 		
 	}
 	
-//	@Test( dataProvider ="InvalidTryEditorInput", dataProviderClass = DataProviders.class)
-//	public void testTryEditorInvalid(String userName, String password, String link,String code, String expectedError) {
-//		LoggerLoad.info(userName+" "+password+" "+link+" "+code+" "+expectedError);
-//		linkedlistObject.clickTopicLink(link);
-//		linkedlistObject.clicktryEditor();
-//		linkedlistObject.setCodePositive(code);
-//		linkedlistObject.clickRunBtn();
-//		//driver.switchTo().alert();
-//		String actualError = driver.switchTo().alert().getText();
-//		driver.switchTo().alert().accept();
-//		Assert.assertEquals(actualError, expectedError);
-//		
-//	}
-//	
-//	
+	@Test( dataProvider ="InvalidTryEditorInput", dataProviderClass = DataProviders.class)
+	public void testTryEditorInvalid(String userName, String password, String link,String code, String expectedError) {
+		LoggerLoad.info(userName+" "+password+" "+link+" "+code+" "+expectedError);
+		linkedlistObject.clickTopicLink(link);
+		linkedlistObject.clicktryEditor();
+		linkedlistObject.setCodePositive(code);
+		linkedlistObject.clickRunBtn();
+		//driver.switchTo().alert();
+		String actualError = driver.switchTo().alert().getText();
+		driver.switchTo().alert().accept();
+		Assert.assertEquals(actualError, expectedError);
+		
+	}
+	
+	
 	
 
 	
