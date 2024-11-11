@@ -20,7 +20,7 @@ public class TC010_HomeTest extends BaseClass {
 
 	@BeforeMethod
 	public void ExcelReadingdata() throws IOException {
-		String path = "./src/test/resources/Excel/TestData.xlsx";// taking excel file from testData
+		String path = "./src/test/resources/testData/TestData.xlsx";// taking excel file from testData
 		ExcelFileReader xlutil = new ExcelFileReader(path); // creating object for xlutility
 		// String[][] validLoginDatafromExcel = new String[1][2];
 		String username = xlutil.getCellData("LoginCredentials", 1, 0);

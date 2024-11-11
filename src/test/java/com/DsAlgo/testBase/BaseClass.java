@@ -1,6 +1,5 @@
 package com.DsAlgo.testBase;
 
-
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -14,40 +13,34 @@ import org.testng.annotations.Parameters;
 import com.DsAlgo.utilities.ConfigFileReader;
 
 public class BaseClass {
-	
-    public static WebDriver driver ;
-    
+
+	public static WebDriver driver;
+
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
-	
+
 	@BeforeMethod
 //	@BeforeClass
 	@Parameters("browser")
 	public void setup(@Optional("Chrome") String browser) {
 		if (browser.equals("Chrome")) {
-			System.out.println("Chrome Browser = "+browser);
+			System.out.println("Chrome Browser = " + browser);
 			driver = new ChromeDriver();
-		}else if (browser.equals("Edge")) {
-			System.out.println("Edge Browser = "+browser);
+		} else if (browser.equals("Edge")) {
+			System.out.println("Edge Browser = " + browser);
 			driver = new EdgeDriver();
-		}else {
-			System.out.println("Default Browser = "+browser);
+		} else {
+			System.out.println("Default Browser = " + browser);
 			driver = new ChromeDriver();
 		}
-		
-//	public void browserlaunch(String browser) {
-//		if (browser.equals("Chrome")) {
-//			driver = new ChromeDriver();
-//		}
-//		if (browser.equals("Edge")) {
-//			driver = new EdgeDriver();
-//		}
+
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(configFileReader.getHomeUrl());
-		
+
 	}
-	  @AfterMethod
-	  public void close() {
+
+	@AfterMethod
+	public void close() {
 //	    public void tearDown(ITestResult result) {
 //	        if (result.getStatus() == ITestResult.FAILURE) {
 //	            // Take a screenshot if the test failed
@@ -58,8 +51,7 @@ public class BaseClass {
 //	            // Save or log the screenshot here if needed
 //	        }
 //	      
-	        driver.quit();
-	    }
+		driver.quit();
+	}
 
-	
 }
