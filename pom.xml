@@ -96,7 +96,12 @@
 	    <artifactId>commons-compress</artifactId>
 	    <version>1.27.1</version>
 	</dependency>
-	
+
+	<dependency>
+		<groupId>DsAlgoTestNG</groupId>
+		<artifactId>DsAlgoTestNG</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
 
 
@@ -126,8 +131,8 @@
     <configuration>
     <properties>
     <dataproviderthreadcount>5</dataproviderthreadcount>
-    <parallel>tests</parallel>
-    <threadcount>5</threadcount>
+    <parallel>methods</parallel>
+    <threadcount>3</threadcount>
     </properties>
     	<suiteXmlFiles>
     		<suiteXmlFile>testng.xml</suiteXmlFile>

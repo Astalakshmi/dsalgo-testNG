@@ -27,11 +27,15 @@ public class CommonUtils {
 			}
 		} 
 	 
-	public void expliciwait(WebElement webElementName) {
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	public void visibilityOf(WebElement webElementName) {
+		 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(webElementName));
 	}
 
+	public void visibilityOfMoreWaitTime(WebElement webElementName) {
+		 wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.visibilityOf(webElementName));
+	}
 	public void navigate_back() {
 		driver.navigate().back();
 	}
@@ -48,12 +52,17 @@ public class CommonUtils {
 //		webElementName.sendKeys(null);
 //	}
 
-	public void get_title(String pagetitle) {
-		pagetitle = driver.getTitle();
-		this.pagetitle = pagetitle;
-		System.out.println(pagetitle);
-	}
+//	public void get_title(String pagetitle) {
+//		pagetitle = driver.getTitle();
+//		this.pagetitle = pagetitle;
+//		System.out.println(pagetitle);
+//	}
 
+//	public void getActualTitle(String actualpagetitle) {
+//		this.pagetitle= driver.getTitle();
+//	}
+	
+	
 	/*
 	 * public boolean click(WebElement element) { try { WebElement eleToClick = new
 	 * WebDriverWait(driver, Duration.ofSeconds(IMPLICIT_WAIT))

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 import com.DsAlgo.utilities.CommonUtils;
 
 public class LoginPage {
@@ -40,7 +39,7 @@ public class LoginPage {
 	WebElement registerLink;
 
 	public void signInclick() {
-		utilsObj.expliciwait(signIn);
+		utilsObj.visibilityOf(signIn);
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 //		wait.until(ExpectedConditions.visibilityOf(signIn)).click();
 		signIn.click();

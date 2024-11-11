@@ -3,12 +3,9 @@ package com.DsAlgo.testBase;
 
 import java.time.Duration;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -23,6 +20,7 @@ public class BaseClass {
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
 	
 	@BeforeMethod
+//	@BeforeClass
 	@Parameters("browser")
 	public void setup(@Optional("Chrome") String browser) {
 		if (browser.equals("Chrome")) {
@@ -35,22 +33,31 @@ public class BaseClass {
 			System.out.println("Default Browser = "+browser);
 			driver = new ChromeDriver();
 		}
+		
+//	public void browserlaunch(String browser) {
+//		if (browser.equals("Chrome")) {
+//			driver = new ChromeDriver();
+//		}
+//		if (browser.equals("Edge")) {
+//			driver = new EdgeDriver();
+//		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(configFileReader.getHomeUrl());
 		
 	}
 	  @AfterMethod
-	    public void tearDown(ITestResult result) {
-	        if (result.getStatus() == ITestResult.FAILURE) {
-	            // Take a screenshot if the test failed
-	       //     final byte[] screenshot = ((TakesScreenshot) WebdriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
-	            // Attach the screenshot to the report (optional)
-	            // Use any reporting framework to attach the screenshot, such as Allure or ExtentReports
-	            System.out.println("Test failed: " + result.getName());
-	            // Save or log the screenshot here if needed
-	        }
-	      
+	  public void close() {
+//	    public void tearDown(ITestResult result) {
+//	        if (result.getStatus() == ITestResult.FAILURE) {
+//	            // Take a screenshot if the test failed
+//	       //     final byte[] screenshot = ((TakesScreenshot) WebdriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
+//	            // Attach the screenshot to the report (optional)
+//	            // Use any reporting framework to attach the screenshot, such as Allure or ExtentReports
+//	            System.out.println("Test failed: " + result.getName());
+//	            // Save or log the screenshot here if needed
+//	        }
+//	      
 	        driver.quit();
 	    }
 

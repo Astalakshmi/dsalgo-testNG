@@ -1,6 +1,5 @@
 package com.DsAlgo.pageObjects;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 import com.DsAlgo.utilities.CommonUtils;
 
@@ -99,12 +95,11 @@ public class HomePage {
 	
 	public void getStartedhomeclick() {
 		getStartedhome.click();
-		
-		
+		System.out.println("Get Started Click");
 	}
 
 	public void getStartedhomeclickwithoutlogin() {
-		utilsObj.expliciwait(getStartedhome);
+		utilsObj.visibilityOf(getStartedhome);
 		getStartedhome.click();
 //		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
 //		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
@@ -127,7 +122,7 @@ public class HomePage {
 		return datastructure.getText();
 	}
 
-	public List<WebElement> dropdownWithoutLogin() {
+	public void dropdownWithoutLogin() {
 		List<WebElement> dropdownListNames = new ArrayList<>();
 		dropdownListNames.add(datastructure);
 		dropdownListNames.add(dropDownarrays);
@@ -141,12 +136,22 @@ public class HomePage {
 		dropdownListNames.add(dropDowntree);
 		dropdownListNames.add(datastructure);
 		dropdownListNames.add(dropDowngraph);
-		return dropdownListNames;
+		
+		for(WebElement eachClick : dropdownListNames)
+		{
+//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//			wait.until(ExpectedConditions.visibilityOf(eachClick)).click();
+			utilsObj.visibilityOfMoreWaitTime(eachClick);
+			eachClick.click();
+		}
 	}
+	
+	//List<WebElement> clickAnyDropdown = dropdownListNames
 
 	public void clickspecificdropdownNames(WebElement eachclick) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.visibilityOf(eachclick)).click();
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//		wait.until(ExpectedConditions.visibilityOf(eachclick)).click();
+		
 	}
 
 	public void datastrcDropdownclick() {
@@ -213,7 +218,7 @@ public class HomePage {
 		return driver.getTitle();
 	}
 
-	public List<WebElement> getAnylinkofGetStarted() {
+	public void getAnylinkofGetStarted() {
 		List<WebElement> getStartedLinks = new ArrayList<>();
 		getStartedLinks.add(datastructureGetstarted);
 		getStartedLinks.add(arrayGetstarted);
@@ -222,13 +227,51 @@ public class HomePage {
 		getStartedLinks.add(queueGetstarted);
 		getStartedLinks.add(treeGetstarted);
 		getStartedLinks.add(graphGetstarted);
-		return getStartedLinks;
+		for(WebElement link:getStartedLinks) {
+			utilsObj.visibilityOf(link);
+			link.click();	
+	}
+	
+		//return getStartedLinks;
+	}
+	
+	public void clickHomeDropdown(String dropdownName) {
+		switch (dropdownName) {
+		case "DataStructuresDropdown":
+			datastrcDropdown.click();
+			break;
+		case "Array":
+			dropDownarrays.click();
+			break;
+
+		case "Linked List":
+			dropDownlinked.click();
+			break;
+
+		case "Stack":
+			dropDownstack.click();
+			break;
+
+		case "Queue":
+			dropDownqueue.click();	
+			break;
+		case "Tree":
+			dropDowntree.click();
+			break;
+		case "Graph":
+			dropDowngraph.click();
+			break;
+	        		
+	     default:
+			throw new RuntimeException("Please click from the dropdown list from home page: ");
+			
+		}
 	}
 
-	public void clickspecificGetStartedlink(WebElement link) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(link)).click();
-	}
+//	public void clickspecificGetStartedlink(WebElement link) {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.visibilityOf(link)).click();
+//	}
 
 	public String getActualMessage() {
 		return alertMessage.getText();
