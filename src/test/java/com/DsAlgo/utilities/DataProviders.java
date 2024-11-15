@@ -6,6 +6,9 @@ import java.util.Arrays;
 import org.testng.annotations.DataProvider;
 
 public class DataProviders {
+	
+	
+	public static String sheetName = "";
 
 	ExcelFileReader excelFileReader = new ExcelFileReader(ConfigFileReader.getInstance().getExcelPath());
 
@@ -251,11 +254,15 @@ public class DataProviders {
 
 	@DataProvider(name = "ValidateLinkedListTopicLink")
 	public String[][] getLinkedListTopicLink() throws IOException {
+		return getTopicLinks("LinkedList");
+	}
+
+	private String[][] getTopicLinks(String sheetName) throws IOException {
 		int rowsLinkedListPageSheet = excelFileReader.getRowCount("LinkedListPage");
 		int totalcols = excelFileReader.getCellCount("LinkedListPage", 2);
 		System.out.println("The Row is :" + rowsLinkedListPageSheet + "Columns : " + totalcols);
 		String[][] topicData = new String[rowsLinkedListPageSheet - 1][2];
-		for (int i = 2; i <= 8; i++) {
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 1);
 			//System.out.print("The data is " + topicData[i - 2][0] + ",");
@@ -270,7 +277,7 @@ public class DataProviders {
 		int totalcols = excelFileReader.getCellCount("LinkedListPage", 2); // WE can skip Lip
 		System.out.println("The Row is : " + rowsLinkedListPageSheet + " Columns : " + totalcols);
 		String[][] topicData = new String[rowsLinkedListPageSheet - 1][2];
-		for (int i = 2; i <= 8; i++) {
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 2);
 			//System.out.print("The data is " + topicData[i - 2][0] + ",");
@@ -282,38 +289,120 @@ public class DataProviders {
 	@DataProvider(name = "LinkedListTopicLinkTryEditorValidCode")
 	public String[][] getLinkedListTopicLinkTryEditorPositive() throws IOException {
 		int rowsLinkedListPageSheet = excelFileReader.getRowCount("LinkedListPage");
-		int rowsTryEditor = 2;
-		int newRows=0;
-		String[][] validCode = new String[14][3]; // total no of links  multiply 2 for 2 valid input
-		for(int i=2;i<=8;i++) {				
-			for(int j=1;j<=2;j++) {
-				validCode[newRows][0]=excelFileReader.getCellData("LinkedListPage", i, 0); //topic link
-				validCode[newRows][1]=excelFileReader.getCellData("TryEditor", j, 0); //code
-				validCode[newRows][2]=excelFileReader.getCellData("TryEditor", j, 1); //output
-				newRows++;
-			}
+
+		String[][] validCode = new String[rowsLinkedListPageSheet - 1][3];// 
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
+			validCode[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
+			validCode[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 3);
+			validCode[i - 2][2] = excelFileReader.getCellData("LinkedListPage", i, 4);
+
 		}
-		System.out.println(Arrays.deepToString(validCode));
 		return validCode;
 	}
 
 	@DataProvider(name = "LinkedListTopicLinkTryEditorInvalidCode")
 	public String[][] getLinkedListTopicLinkTryEditorNegative() throws IOException {
-		int rowsLinkedListPageSheet = excelFileReader.getRowCount("LinkedListPage");
-		int rowsTryEditor = 4;
-		int newRows=0;
-		String[][] validCode = new String[14][3]; //total no of links  multiply 2 for 2 invalid input
-		for(int i=2;i<=8;i++) {				
-			for(int j=3;j<=4;j++) {
-				validCode[newRows][0]=excelFileReader.getCellData("LinkedListPage", i, 0); //topic link
-				validCode[newRows][1]=excelFileReader.getCellData("TryEditor", j, 0); //code
-				validCode[newRows][2]=excelFileReader.getCellData("TryEditor", j, 1); //output
-				newRows++;
-			}
+		int rowsStackPageSheet = excelFileReader.getRowCount("LinkedListPage");
+
+		String[][] inValidCode = new String[rowsStackPageSheet - 1][3];// [15 rows -2]
+		for (int i = 2; i <= rowsStackPageSheet; i++) {
+			inValidCode[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
+			inValidCode[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 7);
+			inValidCode[i - 2][2] = excelFileReader.getCellData("LinkedListPage", i, 8);
+
+
 		}
-		System.out.println(Arrays.deepToString(validCode));
+		return inValidCode;
+	}
+
+	@DataProvider(name = "ValidateLinkedListPracticeQuestions")
+	public String[][] getLinkedListPracticeQuestions() throws IOException {
+		int rowsLinkedListPageSheet = excelFileReader.getRowCount("LinkedListPage");
+		int totalcols = excelFileReader.getCellCount("LinkedListPage", 2);
+		System.out.println("The Row is :" + rowsLinkedListPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsLinkedListPageSheet - 1][1];
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			
+		}
+		return topicData;
+
+	}
+	
+	// ---------------------@DataProvider for Stack Module Page----------
+
+	@DataProvider(name = "ValidateStackTopicLink")
+	public String[][] getLStackTopicLink() throws IOException {
+		int rowsLinkedListPageSheet = excelFileReader.getRowCount("StackPage");
+		int totalcols = excelFileReader.getCellCount("StackPage", 2);
+		System.out.println("The Row is :" + rowsLinkedListPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsLinkedListPageSheet - 1][2];
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("StackPage", i, 1);
+			//System.out.print("The data is " + topicData[i - 2][0] + ",");
+			//System.out.println("The data is " + topicData[i - 2][1] + ",");
+		}
+		return topicData;
+	}
+
+	@DataProvider(name = "ValidateStackTopicLinkTryHere")
+	public String[][] getStackTopicLinkTryHere() throws IOException {
+		int rowsLinkedListPageSheet = excelFileReader.getRowCount("StackPage");
+		int totalcols = excelFileReader.getCellCount("StackPage", 2); // WE can skip Lip
+		System.out.println("The Row is : " + rowsLinkedListPageSheet + " Columns : " + totalcols);
+		String[][] topicData = new String[rowsLinkedListPageSheet - 1][2];
+		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("StackPage", i, 2);
+			//System.out.print("The data is " + topicData[i - 2][0] + ",");
+			//System.out.println("The data is " + topicData[i - 2][1] + ",");
+		}
+		return topicData;
+	}
+
+	@DataProvider(name = "StackTopicLinkTryEditorValidCode")
+	public String[][] getStackTopicLinkTryEditorPositive() throws IOException {
+		int rowsStackPageSheet = excelFileReader.getRowCount("StackPage");
+
+		String[][] validCode = new String[rowsStackPageSheet - 1][3];// [15 rows -2]
+		for (int i = 2; i <= rowsStackPageSheet; i++) {
+			validCode[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
+			validCode[i - 2][1] = excelFileReader.getCellData("StackPage", i, 3);
+			validCode[i - 2][2] = excelFileReader.getCellData("StackPage", i, 4);
+
+		}
 		return validCode;
 	}
 
+	@DataProvider(name = "StackTopicLinkTryEditorInvalidCode")
+	public String[][] getStackTopicLinkTryEditorNegative() throws IOException {
+		int rowsStackPageSheet = excelFileReader.getRowCount("StackPage");
+
+		String[][] inValidCode = new String[rowsStackPageSheet - 1][3];// [15 rows -2]
+		for (int i = 2; i <= rowsStackPageSheet; i++) {
+			inValidCode[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
+			inValidCode[i - 2][1] = excelFileReader.getCellData("StackPage", i, 7);
+			inValidCode[i - 2][2] = excelFileReader.getCellData("StackPage", i, 8);
+
+
+		}
+		return inValidCode;
+	}
+
+	@DataProvider(name = "ValidateStackPracticeQuestions")
+	public String[][] getStackPracticeQuestions() throws IOException {
+		int rowsStackPageSheet = excelFileReader.getRowCount("StackPage");
+		int totalcols = excelFileReader.getCellCount("StackPage", 2);
+		System.out.println("The Row is :" + rowsStackPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsStackPageSheet - 1][1];
+		for (int i = 2; i <= rowsStackPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			
+		}
+		return topicData;
+	}
 
 }

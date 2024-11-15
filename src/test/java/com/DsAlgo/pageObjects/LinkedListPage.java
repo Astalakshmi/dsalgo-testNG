@@ -18,8 +18,9 @@ import com.DsAlgo.utilities.CommonUtils;
 
 
 public class LinkedListPage {
-	WebDriver driver;
+	 WebDriver driver;
 	 CommonUtils utilsObj = CommonUtils.getInstance();
+	 
 
 	@FindBy(xpath = "//h5[text()='Linked List']/../a")
 	WebElement getStartedButton;
@@ -104,33 +105,6 @@ public class LinkedListPage {
 		}
 	}
 
-	public void clickIntroductionLink() {
-		introductionLink.click();
-	}
-
-	public void clickCreatingLinkedListLink() {
-		creatingLinkedListLink.click();
-	}
-
-	public void clickTypesOfLinkedListLink() {
-		typesOfLinkedListLink.click();
-	}
-
-	public void clickImplementLinkedListLink() {
-		implementLinkedListLink.click();
-	}
-
-	public void clickinsertionLink() {
-		insertionLink.click();
-	}
-
-	public void clicktraversalLink() {
-		traversalLink.click();
-	}
-
-	public void clickdeletionLink() {
-		deletionLink.click();
-	}
 
 	public void clicktryEditor() {
 		tryEditor.click();
