@@ -117,6 +117,13 @@ public class ConfigFileReader {
 		else
 			throw new RuntimeException(funcName + " does not match in the Configuration.properties file.");
 	}
+	public String getExcelPath() {
+		String excelPath = properties.getProperty("excelPath");
+		if (excelPath != null)
+			return excelPath;
+		else
+			throw new RuntimeException(" Excel Path is not specified in the Configuration.properties file.");
+	}
 
 
 }

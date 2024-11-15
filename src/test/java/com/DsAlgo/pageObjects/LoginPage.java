@@ -40,7 +40,7 @@ public class LoginPage {
 	WebElement registerLink;
 
 	public void signInclick() {
-		utilsObj.expliciwait(signIn);
+//		utilsObj.expliciwait(signIn);
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 //		wait.until(ExpectedConditions.visibilityOf(signIn)).click();
 		signIn.click();

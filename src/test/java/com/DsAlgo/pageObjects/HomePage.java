@@ -104,7 +104,7 @@ public class HomePage {
 	}
 
 	public void getStartedhomeclickwithoutlogin() {
-		utilsObj.expliciwait(getStartedhome);
+		//utilsObj.expliciwait(getStartedhome);
 		getStartedhome.click();
 //		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
 //		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
