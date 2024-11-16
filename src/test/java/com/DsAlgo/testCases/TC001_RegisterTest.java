@@ -1,23 +1,23 @@
 package com.DsAlgo.testCases;
 
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.DsAlgo.pageObjects.HomePage;
+import com.DsAlgo.pageObjects.LoginPage;
 import com.DsAlgo.pageObjects.RegisterPage;
 import com.DsAlgo.testBase.BaseClass;
-import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.LoggerLoad;
 
 public class TC001_RegisterTest extends BaseClass {
 
-	
-	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
-	String expectedOutput, invalidExpectedOutput;
 	String unameValidateMsg, pwdValidateMsg, confirmPwdValidateMsg;
-
+	int tempRow;
+	int rowNumber;
+	public static final int maxLengthOfRow = 8;
+	LoginPage loginObj = new LoginPage(driver);
+	
 	@Test(enabled = false, dataProvider = "RegisterValidData", dataProviderClass = DataProviders.class)
 	
 	public void testValidRegister(String username, String password,String confirmPassword,String expectedOutput) {
@@ -47,7 +47,7 @@ public class TC001_RegisterTest extends BaseClass {
 			
 		}
 		
-	@Test(priority = 1,dataProvider = "RegisterInvalidData" ,dataProviderClass = DataProviders.class)
+	@Test(priority = 1,dataProvider = "RegisterInvalidData",dataProviderClass = DataProviders.class)
 	
 	public void testInValidRegister(String username, String password,String confirmPassword,String invalidExpectedOutput) {
 		HomePage homeObj = new HomePage(driver);
@@ -59,6 +59,9 @@ public class TC001_RegisterTest extends BaseClass {
 		unameValidateMsg = registerObj.setUsernameMsgAttribute();
 		pwdValidateMsg = registerObj.setPasswordMsgAttribute();
 		confirmPwdValidateMsg = registerObj.setConfirmPwdMsgAttribute();
+		if (rowNumber == maxLengthOfRow) {
+			tempRow = rowNumber + 1;
+		}
 		
 		if (username != null || password != null || confirmPassword != null) {
 			registerObj.setUsername(username);
@@ -94,6 +97,20 @@ public class TC001_RegisterTest extends BaseClass {
 			Assert.assertEquals(failureMessage, invalidExpectedOutput);
 			LoggerLoad.error("password_mismatch:The two password fields didn’t match.");
 		}
+		
+		// Loginlink and Signin Navigation
+				if (tempRow > maxLengthOfRow)
+
+				{
+					registerObj.clickLoginLink();
+					System.out.println("clicked login link");
+					LoggerLoad.info("clicked login link");
+					driver.navigate().back();
+					LoggerLoad.info("Back to Register page");
+					loginObj.signInclick();
+					System.out.println("clicked sign in  nav link");
+					LoggerLoad.info("We are in Register Page ,Navigate to login page using Menubar 'Sign-in' link");
+				}
 	}
 
 

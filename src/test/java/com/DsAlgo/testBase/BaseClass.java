@@ -18,7 +18,9 @@ import com.DsAlgo.utilities.ConfigFileReader;
 
 public class BaseClass {
 	
-    public static WebDriver driver ;
+	// private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+  public static WebDriver driver ;
     
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
 	

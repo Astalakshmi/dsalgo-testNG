@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" >
- <!---<test thread-count="5" name="Test" /> --> 
-  <test name="ChromeTest">
+<suite name="Suite" parallel="tests" thread-count="2">
+<!--  <test thread-count="5" name="Test" parallel="methods"/>  -->
+  <test name="ChromeTest" >
   	<parameter name="browser" value="CHROME"></parameter>
     <classes>
       
-      <class name="com.DsAlgo.testCases.TC001_RegisterTest"/>
+   <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> 
+  <!--    <class name="com.DsAlgo.testCases.TC002_LoginTest"/>-->
+    <class name="com.DsAlgo.testCases.TC007_QueueTest"/> 
+   <class name="com.DsAlgo.testCases.TC009_GraphTest"/> 
          
     </classes>
   </test> <!-- Test -->

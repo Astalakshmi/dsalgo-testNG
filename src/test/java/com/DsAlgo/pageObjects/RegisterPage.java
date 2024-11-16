@@ -98,7 +98,5 @@ public class RegisterPage{
 	public String setMismatchExpOutput() {
 	return failureTextOfRegister.getText();		//password_mismatch:The two password fields didn’t match.
 	}
-	
-	
-	
+		
 	}
