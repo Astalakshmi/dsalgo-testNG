@@ -9,6 +9,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.DsAlgo.pageObjects.HomePage;
@@ -18,9 +19,11 @@ import com.DsAlgo.testBase.BaseClass;
 import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
+import com.DsAlgo.utilities.ExtentTestManager;
+import com.DsAlgo.utilities.ItestListener;
 import com.DsAlgo.utilities.LoggerLoad;
 
-
+@Listeners({ItestListener.class})
 public class TC005_LinkedListTest extends BaseClass {
 private LinkedListPage linkedlistObject;
 HomePage homeObj;
@@ -72,7 +75,8 @@ private String getCurrentMethodName() {
 }
 
 @Test()
-public void ValidateLinkedListGetStarted() {
+public void ValidateLinkedListGetStarted(Method method) {
+
 	Assert.assertEquals(linkedlistObject.getActualTitle(), keyPair.get(getCurrentMethodName()));
 	LoggerLoad.info("You are viewing the " + driver.getTitle() + " page. " + getCurrentMethodName());
 }

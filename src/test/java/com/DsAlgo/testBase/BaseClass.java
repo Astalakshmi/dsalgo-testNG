@@ -1,7 +1,11 @@
 package com.DsAlgo.testBase;
 
+import java.io.File;
 import java.time.Duration;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -11,6 +15,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.DsAlgo.utilities.ConfigFileReader;
+
 
 public class BaseClass {
 
@@ -46,8 +51,30 @@ public class BaseClass {
 //	            System.out.println("Test failed: " + result.getName());
 //	            // Save or log the screenshot here if needed
 //	        }
-//	      
+		
 		driver.quit();
+		
+		 
 	}
+	
+	public WebDriver getDriver() {
+        return driver;
+    }
+	
+	public String getScreenshot(String testName, WebDriver driver)
+    {
+		
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        String screenshotPath = "target/screenshots" + testName +".png";
+        try {
+            FileUtils.copyFile(screenshot,new File(screenshotPath));
+        } catch (Exception e) {
+            System.out.println("Takes Screenshot is null");
+            e.printStackTrace();
+        }
+        return screenshotPath;
+
+    }
 
 }
