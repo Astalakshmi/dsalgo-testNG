@@ -12,7 +12,7 @@
       
     
      <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
-      <!-- <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>  -->
+       <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
        <class name="com.DsAlgo.testCases.TC006_StackTest"/>
       
          
