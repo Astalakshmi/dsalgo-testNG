@@ -23,7 +23,7 @@ import com.DsAlgo.utilities.ExtentTestManager;
 import com.DsAlgo.utilities.ItestListener;
 import com.DsAlgo.utilities.LoggerLoad;
 
-@Listeners({ItestListener.class})
+
 public class TC005_LinkedListTest extends BaseClass {
 private LinkedListPage linkedlistObject;
 HomePage homeObj;
