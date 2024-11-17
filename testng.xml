@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<listeners>
 		<listener
-			class-name="com.DsAlgo.iTestListeners.ITestListenerFile"></listener>
+			class-name="com.DsAlgo.utilities.ItestListener"></listener>
 
 	</listeners>
 	<!--<test thread-count="5" name="Testing Chrome">-->
@@ -21,9 +21,9 @@
 				<class name="com.DsAlgo.testCases.TC010_HomeTest"/>
 				 -->
 			
-			
+			<class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
 
-<class name="com.DsAlgo.testCases.TC010_EachTestScenario"/>
+
 
 
 		</classes>
