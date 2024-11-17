@@ -1,34 +1,35 @@
 package com.DsAlgo.pageObjects;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.DsAlgo.utilities.CommonUtils;
 
-
-
 public class HomePage {
-	
-    WebDriver driver;
-    
-    CommonUtils utilsObj = CommonUtils.getInstance();
-				//constructor
-	public HomePage(WebDriver driver)
-	{
+
+	WebDriver driver;
+
+	CommonUtils utilsObj = CommonUtils.getInstance();
+
+	// constructor
+	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-			//locators
-	
+	// locators
 
-	@FindBy(xpath="//button[@class='btn']")
+	@FindBy(xpath = "//button[@class='btn']")
 	WebElement getStartedhome;
-	
+
 	@FindBy(xpath = "//a[text()='NumpyNinja']")
 	WebElement numpyLogo;
 
@@ -58,7 +59,7 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='dropdown-menu show']/a[text()='Graph']")
 	WebElement dropDowngraph;
 
-	@FindBy(xpath = "//h5[text()='Data Structures-Introduction']")
+	@FindBy(xpath = "//h5[text()='Data Structures-Introduction']/../a[text()='Get Started']")
 	WebElement datastructureGetstarted;
 
 	@FindBy(xpath = "//h5[text()='Array']/../a[text()='Get Started']")
@@ -91,11 +92,11 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='alert alert-primary']")
 	WebElement alertSignout;
 
-	
-	
+	@FindBy(xpath = "//a[@class='nav-link dropdown-toggle' and @data-toggle='dropdown']")
+	WebElement dropdownToggle;
+
 	public void getStartedhomeclick() {
 		getStartedhome.click();
-		System.out.println("Get Started Click");
 	}
 
 	public void getStartedhomeclickwithoutlogin() {
@@ -103,7 +104,7 @@ public class HomePage {
 		getStartedhome.click();
 //		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
 //		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
-		
+
 	}
 
 	public void numpyLogoclick() {
@@ -122,7 +123,7 @@ public class HomePage {
 		return datastructure.getText();
 	}
 
-	public void dropdownWithoutLogin() {
+	public void clickDropdownWithoutLogin() {
 		List<WebElement> dropdownListNames = new ArrayList<>();
 		dropdownListNames.add(datastructure);
 		dropdownListNames.add(dropDownarrays);
@@ -136,51 +137,42 @@ public class HomePage {
 		dropdownListNames.add(dropDowntree);
 		dropdownListNames.add(datastructure);
 		dropdownListNames.add(dropDowngraph);
-		
-		for(WebElement eachClick : dropdownListNames)
-		{
+
+		for (WebElement eachClick : dropdownListNames) {
 //			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //			wait.until(ExpectedConditions.visibilityOf(eachClick)).click();
 			utilsObj.visibilityOfMoreWaitTime(eachClick);
 			eachClick.click();
 		}
 	}
-	
-	//List<WebElement> clickAnyDropdown = dropdownListNames
 
-	public void clickspecificdropdownNames(WebElement eachclick) {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//		wait.until(ExpectedConditions.visibilityOf(eachclick)).click();
-		
-	}
-
-	public void datastrcDropdownclick() {
-		datastrcDropdown.click();
-	}
-
-	public void dropDownarraysclick() {
-		dropDownarrays.click();
-	}
-
-	public void dropDownlinkedclick() {
-		dropDownlinked.click();
-	}
-
-	public void dropDownstackclick() {
-		dropDownstack.click();
-	}
-
-	public void dropDownqueueclick() {
-		dropDownqueue.click();
-	}
-
-	public void dropDowntreeclick() {
-		dropDowntree.click();
-	}
-
-	public void dropDowngraphclick() {
-		dropDowngraph.click();
-	}
+//	public void datastrcDropdownclick() {
+//		datastrcDropdown.click();
+//	}
+//
+//	public void dropDownarraysclick() {
+//		dropDownarrays.click();
+//	}
+//
+//	public void dropDownlinkedclick() {
+//		dropDownlinked.click();
+//	}
+//
+//	public void dropDownstackclick() {
+//		dropDownstack.click();
+//	}
+//
+//	public void dropDownqueueclick() {
+//		dropDownqueue.click();
+//	}
+//
+//	public void dropDowntreeclick() {
+//		dropDowntree.click();
+//	}
+//
+//	public void dropDowngraphclick() {
+//		dropDowngraph.click();
+//	}
 
 	public void accountHoldernameclick() {
 		accountHoldername.click();
@@ -218,6 +210,8 @@ public class HomePage {
 		return driver.getTitle();
 	}
 
+	
+	//needed
 	public void getAnylinkofGetStarted() {
 		List<WebElement> getStartedLinks = new ArrayList<>();
 		getStartedLinks.add(datastructureGetstarted);
@@ -227,52 +221,94 @@ public class HomePage {
 		getStartedLinks.add(queueGetstarted);
 		getStartedLinks.add(treeGetstarted);
 		getStartedLinks.add(graphGetstarted);
-		for(WebElement link:getStartedLinks) {
+		for (WebElement link : getStartedLinks) {
 			utilsObj.visibilityOf(link);
-			link.click();	
+			link.click();
+		}
 	}
-	
-		//return getStartedLinks;
-	}
-	
+
 	public void clickHomeDropdown(String dropdownName) {
 		switch (dropdownName) {
-		case "DataStructuresDropdown":
-			datastrcDropdown.click();
-			break;
 		case "Array":
+			dropdownToggle.click();
+			utilsObj.attributeToBeWaitTime(dropdownToggle, "aria-expanded", "true");
 			dropDownarrays.click();
 			break;
 
 		case "Linked List":
+
+			WebElement dropdownToggle2 = driver
+					.findElement(By.xpath("//a[@class='nav-link dropdown-toggle' and @data-toggle='dropdown']"));
+			dropdownToggle2.click();
+			WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait2.until(ExpectedConditions.attributeToBe(dropdownToggle2, "aria-expanded", "true"));
+			utilsObj.visibilityOf(dropDownlinked);
 			dropDownlinked.click();
 			break;
 
 		case "Stack":
+			dropdownToggle.click();
+			utilsObj.attributeToBeWaitTime(dropdownToggle, "aria-expanded", "true");
 			dropDownstack.click();
 			break;
 
 		case "Queue":
-			dropDownqueue.click();	
+			dropdownToggle.click();
+			utilsObj.attributeToBeWaitTime(dropdownToggle, "aria-expanded", "true");
+			dropDownqueue.click();
 			break;
 		case "Tree":
+			dropdownToggle.click();
+			utilsObj.attributeToBeWaitTime(dropdownToggle, "aria-expanded", "true");
 			dropDowntree.click();
 			break;
 		case "Graph":
+			dropdownToggle.click();
+			utilsObj.attributeToBeWaitTime(dropdownToggle, "aria-expanded", "true");
 			dropDowngraph.click();
 			break;
-	        		
-	     default:
+
+		default:
 			throw new RuntimeException("Please click from the dropdown list from home page: ");
-			
+
 		}
 	}
 
-//	public void clickspecificGetStartedlink(WebElement link) {
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		wait.until(ExpectedConditions.visibilityOf(link)).click();
-//	}
+	// -------------------
+	public void clickGetStarted(String getStartedName) {
+		switch (getStartedName) {
+		case "Data Structures-Introduction":
+			datastructureGetstarted.click();
+			break;
+		case "Array":
+			arrayGetstarted.click();
+			break;
 
+		case "Linked List":
+			linkedlistGetstarted.click();
+			break;
+
+		case "Stack":
+			stackGetstarted.click();
+			break;
+
+		case "Queue":
+			queueGetstarted.click();
+			break;
+		case "Tree":
+			treeGetstarted.click();
+			break;
+		case "Graph":
+			graphGetstarted.click();
+			break;
+
+		default:
+			throw new RuntimeException("Please click GetStarted Click Button from home page: ");
+
+		}
+	}
+
+	
 	public String getActualMessage() {
 		return alertMessage.getText();
 	}
@@ -281,7 +317,7 @@ public class HomePage {
 		return accountHoldername.getText();
 	}
 
-	public void logoutClick() {
+	public void clickSignout() {
 		logOut.click();
 	}
 
@@ -289,5 +325,4 @@ public class HomePage {
 		return alertSignout.getText();
 	}
 
-	
 }

@@ -1,16 +1,17 @@
 package com.DsAlgo.pageObjects;
 
-
-
+import java.time.Duration;
 import java.util.List;
-
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import com.DsAlgo.utilities.CommonUtils;
 
 public class DataStructurePage {
@@ -33,6 +34,12 @@ public class DataStructurePage {
 
 	@FindBy(xpath = "//div[contains(@class , 'CodeMirror') and contains(@class,'cm-s-default')]//textarea")
 	WebElement inputCode;
+	
+	@FindBy(xpath = "//button[@onclick='runit()']")
+	WebElement runButton;
+	
+	@FindBy(xpath = "//*[@id='output']")
+	WebElement afterRunOutput;
 
 	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
 	WebElement practice_ques;
@@ -61,6 +68,27 @@ public class DataStructurePage {
 		answerForm.click();
 		inputCode.sendKeys(code);
 	}
+	
+	public void clickRunBtn() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		wait.until(ExpectedConditions.elementToBeClickable(runButton));
+		utilsObj.elementToBeClickableWaitTime(runButton);
+		runButton.click();
+	}
+
+//	public void clearFormText() {
+//		Actions actions = new Actions(driver);
+//		actions.moveToElement(inputCode).click().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)
+//				.sendKeys(Keys.BACK_SPACE).perform();
+//	}
+
+	public String getOutput() {
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//		WebElement outputElement = wait.until(ExpectedConditions.visibilityOf(afterRunOutput)); // Wait for output visibility
+		utilsObj.visibilityOfMoreWaitTime(afterRunOutput);
+		return afterRunOutput.getText();
+	}
+
 
 	public void pracQuesclick() {
 		practice_ques.click();
