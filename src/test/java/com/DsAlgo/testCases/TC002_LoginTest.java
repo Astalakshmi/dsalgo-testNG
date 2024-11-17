@@ -1,7 +1,13 @@
 package com.DsAlgo.testCases;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LoginPage;
@@ -9,10 +15,28 @@ import com.DsAlgo.pageObjects.RegisterPage;
 import com.DsAlgo.testBase.BaseClass;
 import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
+import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
+
+
+@Listeners(com.DsAlgo.utilities.ItestListener.class)
 
 public class TC002_LoginTest extends BaseClass {
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
+
+	
+	HomePage homeObj;
+	ExcelFileReader excelFileReader = new ExcelFileReader(ConfigFileReader.getInstance().getExcelPath());
+	Map<String, String> keyPair;
+
+	@BeforeClass
+	public void reading() throws IOException {
+		keyPair = excelFileReader.getKeyPair("LoginCredentials");
+	}
+	
+	private String getCurrentMethodName() {
+		return StackWalker.getInstance().walk(s -> s.skip(1).findFirst()).get().getMethodName();
+	}
 
 	@Test(dataProvider = "ValidLoginData", dataProviderClass = DataProviders.class)
 
@@ -80,25 +104,24 @@ public class TC002_LoginTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 3)
+	@Test(priority=2)
 
 	public void verifyDropdownWithoutLogin() {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
-		homeObj.dropdownWithoutLogin();
-		Assert.assertEquals(homeObj.getActualMessage(), "You are not logged in");
+		homeObj.clickDropdownWithoutLogin();
+		Assert.assertEquals(homeObj.getActualMessage(), keyPair.get(getCurrentMethodName()));
+		LoggerLoad.info("The User is seeing the alert message " + homeObj.getActualMessage());
 	}
-	
-	@Test(priority = 4)
+
+	@Test(priority = 3)
 
 	public void verifyGetStartedWithoutLogin() {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
 		homeObj.getAnylinkofGetStarted();
-		Assert.assertEquals(homeObj.getActualMessage(), "You are not logged in");
+		Assert.assertEquals(homeObj.getActualMessage(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("The User is seeing the alert message " + homeObj.getActualMessage());
 	}
 
-
-
-}
+	}
