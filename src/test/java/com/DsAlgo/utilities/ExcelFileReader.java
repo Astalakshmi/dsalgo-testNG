@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -94,6 +96,31 @@ public class ExcelFileReader
 		workbook.close();
 		fi.close();
 		fo.close();
+	}
+	
+	public Map<String, String> getKeyPair(String sheetName) throws IOException {
+		fi = new FileInputStream(path);
+		workbook = new XSSFWorkbook(fi);
+		sheet = workbook.getSheet(sheetName);
+		int rowCount = sheet.getLastRowNum();
+		XSSFRow r;
+		Map<String, String> m = new HashMap<String, String>();
+		DataFormatter formatter = new DataFormatter();
+		for (int i = 0; i < rowCount; i++) {
+			r = sheet.getRow(i);
+			String key, value;
+			try {
+				key = formatter.formatCellValue(r.getCell(0));
+				value = formatter.formatCellValue(r.getCell(1));
+			} catch (Exception e) {
+				key = "";
+				value = "";
+			}
+			m.put(key, value);
+		}
+		workbook.close();
+		fi.close();
+		return m;
 	}
 }
 
