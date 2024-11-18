@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Suite" thread-count="5" parallel="tests">
  <!---<test thread-count="5" name="Test" /> --> 
-  <test name="ChromeTest">
-  	<parameter name="browser" value="CHROME"></parameter>
+  <listeners>
+        <listener class-name="com.DsAlgo.utilities.ItestListener"/>
+      <!--  <listener class-name="com.DsAlgo.utilities.AnnotationTransformer"/> -->
+    </listeners>
+  <test name="ChromeTest" >
+  	<parameter name="browser" value="Chrome"></parameter>
     <classes>
       
     
      <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
-       <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
+      <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
+       <class name="com.DsAlgo.testCases.TC006_StackTest"/>
+       <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
       
          
     </classes>
-  </test> <!-- Test -->
+  </test> <!-- Test
+
+  <test name="FirefoxTest" >
+  	<parameter name="browser" value="Firefox"></parameter>
+    <classes>
+      
+    
+  
+       <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
+       <class name="com.DsAlgo.testCases.TC006_StackTest"/>
+        <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
+        
+      
+         
+    </classes>
+  </test>  -->
 </suite> <!-- Suite -->
