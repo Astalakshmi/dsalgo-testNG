@@ -39,59 +39,12 @@ public class ConfigFileReader {
 		}
 	}
 
-	private static String browserType = null;
-
-	public static void setBrowserType(String browser) {
-		browserType = browser;
-	}
-
-	public static String getBrowserType() {
-
-		if (browserType != null)
-			return browserType;
-		else
-			throw new RuntimeException("browser not specified in the testng.xml");
-
-	}
-
-	public String getBrowser() {
-		String browser = properties.getProperty("browser");
-		if (browser != null)
-			return browser;
-		else
-			throw new RuntimeException("browser not specified in the Configuration.properties file.");
-	}
-
-	public String getPageTitle(String pageName) {
-		String title = properties.getProperty(pageName);
-		if (title != null)
-			return title;
-		else
-			throw new RuntimeException(pageName + " url not specified in the Configuration.properties file.");
-	}
-
 	public String getHomeUrl() {
 		String homeUrl = properties.getProperty("homeUrl");
 		if (homeUrl != null)
 			return homeUrl;
 		else
 			throw new RuntimeException(" Index url not specified in the Configuration.properties file.");
-	}
-
-	public String getHomePageUrlAfterLogin() {
-		String homePageUrlAfterLogin = properties.getProperty("homePageUrlAfterLogin");
-		if (homePageUrlAfterLogin != null)
-			return homePageUrlAfterLogin;
-		else
-			throw new RuntimeException(" homepage url not specified in the Configuration.properties file.");
-	}
-
-	public String getLoginUrl() {
-		String loginUrl = properties.getProperty("loginUrl");
-		if (loginUrl != null)
-			return loginUrl;
-		else
-			throw new RuntimeException(" login url not specified in the Configuration.properties file.");
 	}
 
 	public String getRegisterUrl() {
@@ -102,21 +55,11 @@ public class ConfigFileReader {
 			throw new RuntimeException(" register url not specified in the Configuration.properties file.");
 	}
 
-	public String getAlert(String alertNames) {
-		String alertName = properties.getProperty(alertNames);
-		if (alertName != null)
-			return alertName;
+	public String getExcelPath() {
+		String excelPath = properties.getProperty("excelPath");
+		if (excelPath != null)
+			return excelPath;
 		else
-			throw new RuntimeException(alertName + " alert does not match in the Configuration.properties file.");
+			throw new RuntimeException(" Excel Path is not specified in the Configuration.properties file.");
 	}
-
-	public String getFunctionalityMessage(String functionalityName) {
-		String funcName = properties.getProperty(functionalityName);
-		if (funcName != null)
-			return funcName;
-		else
-			throw new RuntimeException(funcName + " does not match in the Configuration.properties file.");
-	}
-
-
 }
