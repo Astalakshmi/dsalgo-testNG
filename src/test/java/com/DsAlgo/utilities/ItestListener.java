@@ -32,13 +32,6 @@ public class ItestListener extends BaseClass implements ITestListener {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
     
-//    
-//    @Attachment(value="" type="image/png")
-//    public byte[] saveScreenshotPNG(WebDriver driver) {
-//    	return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//    }
-//    
-    
 
     @Override
     public void onStart(ITestContext iTestContext) {
@@ -84,25 +77,12 @@ public class ItestListener extends BaseClass implements ITestListener {
         		ExtentTestManager.getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
         
         File screenshotAsFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        File destinationScreenshotFile = new File("./target/screenshots/"+Math.random()+".png");
-//        try {
-//			FileUtils.copyFile(screenshotAsFile, destinationScreenshotFile);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
         
         try {
-        	 
-            // ExtentTestManager.getTest().addScreenCaptureFromPath(destinationScreenshotFile.getAbsolutePath());
 			Allure.addAttachment("screenshot", FileUtils.openInputStream(screenshotAsFile));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//       String screenshot = "<img src='data:image/png;base64,"+ ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-//        //Allure.addAttachment("screenshot", "Image/png", base64Screenshot);
-//		Allure.addAttachment("Failed Screenshot","text/html", (screenshot));
         
     }
 

@@ -13,16 +13,16 @@ import com.aventstack.extentreports.ExtentTest;
 	 * At getTest() method, return ExtentTest instance in extentTestMap by using current thread id.
 	 */
 	public class ExtentTestManager {
-	    public static Map<Integer, ExtentTest> extentTestMap = new HashMap<>();
+	    public static Map<Long, ExtentTest> extentTestMap = new HashMap<>();
 	    public static ExtentReports extent = ExtentManager.createExtentReports();
 	
 		public static synchronized ExtentTest getTest() {
-	        return extentTestMap.get((int) Thread.currentThread().threadId());
+	        return extentTestMap.get((long) Thread.currentThread().getId());
 	    }
 	   
 		public static synchronized ExtentTest startTest(String testName, String desc) {
 	        ExtentTest test = extent.createTest(testName, desc);
-	        extentTestMap.put((int) Thread.currentThread().threadId(), test);
+	        extentTestMap.put((long) Thread.currentThread().getId(), test);
 	        return test;
 	    }
 	

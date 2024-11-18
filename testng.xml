@@ -12,23 +12,26 @@
       
     
      <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
-       <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
+      <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
        <class name="com.DsAlgo.testCases.TC006_StackTest"/>
+       <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
       
          
     </classes>
-  </test> <!-- Test -->
-  
+  </test> <!-- Test
+
   <test name="FirefoxTest" >
   	<parameter name="browser" value="Firefox"></parameter>
     <classes>
       
     
-     <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
+  
        <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
        <class name="com.DsAlgo.testCases.TC006_StackTest"/>
+        <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
+        
       
          
     </classes>
-  </test> <!-- Test -->
+  </test>  -->
 </suite> <!-- Suite -->

@@ -34,7 +34,6 @@ Map<String, String> keyPair;
 
 @BeforeClass
 public void reading() throws IOException {
-	DataProviders.sheetName = "LinkedListPage";
 	username = excelFileReader.getCellData("LoginCredentials", 1, 0);
 	password = excelFileReader.getCellData("LoginCredentials", 1, 1);
 	keyPair = excelFileReader.getKeyPair("LinkedListPage");

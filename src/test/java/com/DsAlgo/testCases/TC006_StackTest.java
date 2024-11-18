@@ -37,7 +37,7 @@ public void reading() throws IOException {
 	password = excelFileReader.getCellData("LoginCredentials", 1, 1);
 	keyPair = excelFileReader.getKeyPair("StackPage");
 	
-	LoggerLoad.info("efhdjfhjfhdjUser Enter Login credential with username as \" " + username + "\" and password as\" "
+	LoggerLoad.info("User Enter Login credential with username as \" " + username + "\" and password as\" "
 			+ password + "\" ");
 	
 	for (String name : this.keyPair.keySet()) {

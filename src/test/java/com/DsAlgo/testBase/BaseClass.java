@@ -65,20 +65,5 @@ public class BaseClass {
         return driver;
     }
 	
-	public String getScreenshot(String testName, WebDriver driver)
-    {
-		
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-        File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        String screenshotPath = "target/screenshots" + testName +".png";
-        try {
-            FileUtils.copyFile(screenshot,new File(screenshotPath));
-        } catch (Exception e) {
-            System.out.println("Takes Screenshot is null");
-            e.printStackTrace();
-        }
-        return screenshotPath;
-
-    }
 
 }
