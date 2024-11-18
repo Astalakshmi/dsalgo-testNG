@@ -71,7 +71,7 @@ public class TC003_ArrayTest extends BaseClass{
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 	@Test(priority = 2, dataProvider = "ValidateArrayTopicLinkTryHere", dataProviderClass = DataProviders.class)
-	public void ValidateTreeTryHere(String linkNames, String expectedMessage) {
+	public void ValidateArrayTryHere(String linkNames, String expectedMessage) {
 		arrayObj.clickTopicLink(linkNames);
 		arrayObj.clickArrTryHereBtn();;
 		Assert.assertEquals(arrayObj.getActualTitle(), expectedMessage);
@@ -79,7 +79,7 @@ public class TC003_ArrayTest extends BaseClass{
 	}
 
 	@Test(priority = 3, dataProvider = "ArrayTopicLinkTryEditorValidCode", dataProviderClass = DataProviders.class)
-	public void ValidateTreeTryEditorPositive(String linkNames, String validPythonCode, String pythonCodeOutput) {
+	public void ValidateArrayTryEditorPositive(String linkNames, String validPythonCode, String pythonCodeOutput) {
 		arrayObj.clickTopicLink(linkNames);
 		arrayObj.clickArrTryHereBtn();;
 		arrayObj.setCodePositive(validPythonCode);
@@ -90,7 +90,7 @@ public class TC003_ArrayTest extends BaseClass{
 	}
 
 	@Test(priority = 4, dataProvider = "ArrayTopicLinkTryEditorInvalidCode", dataProviderClass = DataProviders.class)
-	public void ValidateTreeTryEditorNegative(String linkNames, String invalidCodeInput, String expectedError) {
+	public void ValidateArrayTryEditorNegative(String linkNames, String invalidCodeInput, String expectedError) {
 		arrayObj.clickTopicLink(linkNames);
 		arrayObj.clickArrTryHereBtn();
 		arrayObj.setCodeNegative(invalidCodeInput);
