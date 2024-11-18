@@ -1,7 +1,5 @@
 package com.DsAlgo.pageObjects;
 
-
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,9 +9,8 @@ import com.DsAlgo.utilities.CommonUtils;
 
 public class LoginPage {
 	WebDriver driver;
-	 CommonUtils utilsObj = CommonUtils.getInstance();
+	CommonUtils utilsObj = CommonUtils.getInstance();
 
-	// @FindBy(xpath = "//a[normalize-space()='Sign in']")
 	@FindBy(xpath = "//a[text()='Sign in']")
 	WebElement signIn;
 
@@ -40,8 +37,6 @@ public class LoginPage {
 
 	public void signInclick() {
 		utilsObj.visibilityOf(signIn);
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//		wait.until(ExpectedConditions.visibilityOf(signIn)).click();
 		signIn.click();
 	}
 

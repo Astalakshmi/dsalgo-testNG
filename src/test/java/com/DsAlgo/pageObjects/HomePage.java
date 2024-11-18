@@ -102,9 +102,6 @@ public class HomePage {
 	public void getStartedhomeclickwithoutlogin() {
 		utilsObj.visibilityOf(getStartedhome);
 		getStartedhome.click();
-//		WebDriverWait w1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-//		w1.until(ExpectedConditions.visibilityOf(getStartedhome)).click();
-
 	}
 
 	public void numpyLogoclick() {
@@ -139,40 +136,10 @@ public class HomePage {
 		dropdownListNames.add(dropDowngraph);
 
 		for (WebElement eachClick : dropdownListNames) {
-//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//			wait.until(ExpectedConditions.visibilityOf(eachClick)).click();
 			utilsObj.visibilityOfMoreWaitTime(eachClick);
 			eachClick.click();
 		}
 	}
-
-//	public void datastrcDropdownclick() {
-//		datastrcDropdown.click();
-//	}
-//
-//	public void dropDownarraysclick() {
-//		dropDownarrays.click();
-//	}
-//
-//	public void dropDownlinkedclick() {
-//		dropDownlinked.click();
-//	}
-//
-//	public void dropDownstackclick() {
-//		dropDownstack.click();
-//	}
-//
-//	public void dropDownqueueclick() {
-//		dropDownqueue.click();
-//	}
-//
-//	public void dropDowntreeclick() {
-//		dropDowntree.click();
-//	}
-//
-//	public void dropDowngraphclick() {
-//		dropDowngraph.click();
-//	}
 
 	public void accountHoldernameclick() {
 		accountHoldername.click();
@@ -210,8 +177,6 @@ public class HomePage {
 		return driver.getTitle();
 	}
 
-	
-	//needed
 	public void getAnylinkofGetStarted() {
 		List<WebElement> getStartedLinks = new ArrayList<>();
 		getStartedLinks.add(datastructureGetstarted);
@@ -274,7 +239,6 @@ public class HomePage {
 		}
 	}
 
-	// -------------------
 	public void clickGetStarted(String getStartedName) {
 		switch (getStartedName) {
 		case "Data Structures-Introduction":
@@ -308,7 +272,6 @@ public class HomePage {
 		}
 	}
 
-	
 	public String getActualMessage() {
 		return alertMessage.getText();
 	}

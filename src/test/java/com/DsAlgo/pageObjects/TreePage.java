@@ -3,10 +3,8 @@ package com.DsAlgo.pageObjects;
 import java.time.Duration;
 import java.util.List;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,12 +14,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.DsAlgo.utilities.CommonUtils;
 
 public class TreePage {
-	
-	 WebDriver driver;
-	    
-	    CommonUtils utilsObj = CommonUtils.getInstance();
-					//constructor
-		
+
+	WebDriver driver;
+
+	CommonUtils utilsObj = CommonUtils.getInstance();
+
 	@FindBy(xpath = "//h5[text()='Tree']/../a[text()='Get Started']")
 	WebElement getStarted;
 
@@ -75,22 +72,22 @@ public class TreePage {
 
 	@FindBy(xpath = "//div[@align='left']/pre[@id='output']")
 	WebElement runOutputvalue;
-	
-	@FindBy (partialLinkText = "Practice Questions")
+
+	@FindBy(partialLinkText = "Practice Questions")
 	WebElement treePracticeLink;
-	
-	@FindAll (value = { @FindBy (className = "list-group") })
+
+	@FindAll(value = { @FindBy(className = "list-group") })
 	List<WebElement> practiceQuestions;
-	 
+
 	@FindBy(id = "answer_form")
-	WebElement answerForm;  
-	
+	WebElement answerForm;
+
 	@FindBy(xpath = "//div[contains(@class , 'CodeMirror') and contains(@class,'cm-s-default')]//textarea")
 	WebElement inputCode;
-	
+
 	@FindBy(xpath = "//button[@onclick='runit()']")
 	WebElement runButton;
-	
+
 	@FindBy(xpath = "//*[@id='output']")
 	WebElement afterRunOutput;
 
@@ -178,11 +175,10 @@ public class TreePage {
 	public String getActualTitle() {
 		return driver.getTitle();
 	}
-	
-	
+
 	public void clickTopicLink(String topicXpath) {
 		switch (topicXpath) {
-		
+
 		case "OverviewOfTree":
 			overviewTrees.click();
 			break;
@@ -196,7 +192,7 @@ public class TreePage {
 			break;
 
 		case "TreeTraversals":
-			treeTraversals.click();	
+			treeTraversals.click();
 			break;
 		case "Traversals-Illustration":
 			traversalsIllustrations.click();
@@ -206,38 +202,36 @@ public class TreePage {
 			break;
 		case "TypesOfBinaryTrees":
 			typesOfBinaryTrees.click();
-			break;	
-			
-			
-        case "ImplementationPython":
-        	impInpython.click();
 			break;
-			
-			
-        case "BinaryTreeTraversals":
-        	binTreestraversal.click();
+
+		case "ImplementationPython":
+			impInpython.click();
 			break;
-			
-        case "ImplementationBinaryTrees":
-        	impBinaryTrees.click();
+
+		case "BinaryTreeTraversals":
+			binTreestraversal.click();
 			break;
-			
-        case "ApplicationsofBinaryTrees":
-        	appBinTree.click();
+
+		case "ImplementationBinaryTrees":
+			impBinaryTrees.click();
 			break;
-        case "BinarySearchTrees":
-        	binarySearchTrees.click();
+
+		case "ApplicationsofBinaryTrees":
+			appBinTree.click();
 			break;
-			
-        case "ImplementationOfBST":
-        	impBst.click();
+		case "BinarySearchTrees":
+			binarySearchTrees.click();
 			break;
-	     default:
+
+		case "ImplementationOfBST":
+			impBst.click();
+			break;
+		default:
 			throw new RuntimeException("Please pass the topic name: ");
-			
+
 		}
 	}
-	
+
 	public void setCodePositive(String code) {
 		answerForm.click();
 		inputCode.sendKeys(code);
@@ -254,21 +248,13 @@ public class TreePage {
 		runButton.click();
 	}
 
-//	public void clearFormText() {
-//		Actions actions = new Actions(driver);
-//		actions.moveToElement(inputCode).click().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)
-//				.sendKeys(Keys.BACK_SPACE).perform();
-//	}
-
 	public String getOutput() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		WebElement outputElement = wait.until(ExpectedConditions.visibilityOf(afterRunOutput)); // Wait for output visibility
+		WebElement outputElement = wait.until(ExpectedConditions.visibilityOf(afterRunOutput));
 		return outputElement.getText();
 	}
 
-
-	public TreePage(WebDriver driver)
-	{
+	public TreePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
