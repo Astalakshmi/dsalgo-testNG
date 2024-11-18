@@ -1,6 +1,4 @@
-
 package com.DsAlgo.utilities;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -14,15 +12,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-
 import com.DsAlgo.testBase.BaseClass;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
-
-import com.DsAlgo.utilities.ExtentTestManager;
 
 
 
