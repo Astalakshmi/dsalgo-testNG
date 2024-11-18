@@ -1,20 +1,16 @@
 package com.DsAlgo.pageObjects;
 
-
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 import com.DsAlgo.utilities.CommonUtils;
 
 public class LoginPage {
 	WebDriver driver;
-	 CommonUtils utilsObj = CommonUtils.getInstance();
+	CommonUtils utilsObj = CommonUtils.getInstance();
 
-	// @FindBy(xpath = "//a[normalize-space()='Sign in']")
 	@FindBy(xpath = "//a[text()='Sign in']")
 	WebElement signIn;
 
@@ -40,9 +36,7 @@ public class LoginPage {
 	WebElement registerLink;
 
 	public void signInclick() {
-		utilsObj.expliciwait(signIn);
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//		wait.until(ExpectedConditions.visibilityOf(signIn)).click();
+		utilsObj.visibilityOf(signIn);
 		signIn.click();
 	}
 
