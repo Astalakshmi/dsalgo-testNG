@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="4"  parallel="tests">
+
+	 <listeners> <listener class-name="com.DsAlgo.iTestListeners.ITestListenerFile"></listener> 
+		</listeners>  
+
+	<test name="Testing Chrome">
+		<parameter name="browser" value="Chrome"></parameter>
+		<classes>
+
+			<!-- <class name="com.DsAlgo.testCases.TC010_EachTestScenario" /> -->
+			
+			
+			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
+
+ <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+ 
+
+		
+			
+			
+		</classes>
+		
+	</test> <!-- Test -->
+	
+	<test  name="Testing Edge">
+		<parameter name="browser" value="Edge"></parameter>
+		<classes>
+
+			<!-- <class name="com.DsAlgo.testCases.TC010_EachTestScenario" /> -->
+			
+			
+			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
+
+ <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+ 
+
+		
+			
+			
+		</classes>
+		
+	</test> <!-- Test -->
+	
+</suite> <!-- Suite -->
+
