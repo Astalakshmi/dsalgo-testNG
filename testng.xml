@@ -9,12 +9,12 @@
   	<parameter name="browser" value="CHROME"></parameter>
     <classes>
       
-  <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> 
-     <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
+ <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> 
+  <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
     <class name="com.DsAlgo.testCases.TC007_QueueTest"/>
    <class name="com.DsAlgo.testCases.TC009_GraphTest"/> 
     </classes>
-  </test> <!-- Test -->
+  </test> 
   
  <!--  
   <test name="EdgeTest" >
