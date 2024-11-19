@@ -29,6 +29,7 @@ public class TC009_GraphTest  extends BaseClass{
 		 username = excelFileReader.getCellData("LoginCredentials", 1, 0);
 		 password = excelFileReader.getCellData("LoginCredentials", 1, 1);
 		 keyPair = excelFileReader.getKeyPair("GraphPage");
+		 System.out.println("order before class graph page");
 	}
 	
 	@BeforeMethod	
@@ -46,6 +47,8 @@ public class TC009_GraphTest  extends BaseClass{
 			loginObj.setLoginPassword(password);
 			loginObj.loginBtnclick();
 		}
+		
+		 System.out.println("order before method graph page");
 		graphObj= new GraphPage(driver);
 		graphObj.clickGraphStarted();
 	}
@@ -59,6 +62,7 @@ public class TC009_GraphTest  extends BaseClass{
 
 		Assert.assertEquals(graphObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
+		 System.out.println("order TEST graph page");
 	}
 		
 	@Test(priority=1,dataProvider = "ValidateGraphTopicLink", dataProviderClass = DataProviders.class)
