@@ -18,6 +18,7 @@ import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
+import com.DsAlgo.utilities.RetryAnalyzer;
 
 
 @Listeners(com.DsAlgo.utilities.ItestListener.class)
@@ -52,10 +53,13 @@ public class TC003_DataStructureTest extends BaseClass {
 			loginObj.setUsername(username);
 			loginObj.setLoginPassword(password);
 			loginObj.loginBtnclick();
+			
 		}
 
 		datastructureObj = new DataStructurePage(driver);
 		datastructureObj.getStartedclick();
+		
+		
 	}
 
 	private String getCurrentMethodName() {
@@ -64,12 +68,12 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	@Test()
 	public void ValidateDataStructureGetStarted() {
-
+		
 		Assert.assertEquals(datastructureObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, dependsOnMethods = "ValidateDataStructureGetStarted")
 
 	public void ValidateDataStructureTimeComplexity() {
 
@@ -79,7 +83,7 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, dependsOnMethods = "ValidateDataStructureGetStarted")
 
 	public void ValidateTimeComplexityTryHere() {
 		datastructureObj.timeComplexclick();
@@ -91,7 +95,8 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	// -----@DataTC_006
 
-	@Test(priority = 3, dataProvider = "DataTryEditorValidCode", dataProviderClass = DataProviders.class)
+	@Test(priority = 3, dataProvider = "DataTryEditorValidCode", dataProviderClass = DataProviders.class,
+			dependsOnMethods = "ValidateDataStructureGetStarted")
 
 	public void ValidateTimeComplexityTryEditorPositive(String validPythonCode, String pythonCodeOutput) {
 		datastructureObj.timeComplexclick();
@@ -103,7 +108,8 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	}
 
-	@Test(priority = 4, dataProvider = "DataTryEditorInvalidCode", dataProviderClass = DataProviders.class)
+	@Test(priority = 4, dataProvider = "DataTryEditorInvalidCode", dataProviderClass = DataProviders.class,
+			dependsOnMethods = "ValidateDataStructureGetStarted")
 	public void ValidateDataTryEditorNegative(String invalidCodeInput, String expectedError) {
 		datastructureObj.timeComplexclick();
 		datastructureObj.tryHereclick();
@@ -116,7 +122,7 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
 
 	public void ValidatePraticeQuestions() {
 		datastructureObj.timeComplexclick();
