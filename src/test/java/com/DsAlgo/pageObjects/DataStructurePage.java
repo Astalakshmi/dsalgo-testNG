@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import com.DsAlgo.utilities.CommonUtils;
 
 public class DataStructurePage {
@@ -78,11 +77,8 @@ public class DataStructurePage {
 		practice_ques.click();
 	}
 
-	public void getPracticeQuestionscount() {
-		int practiceCount = practiceQuestions.size();
-		if (practiceCount < 1) {
-			Assert.fail("No questions found");
-		}
+	public int getPracticeQuestionscount() {
+		return practiceQuestions.size();
 	}
 
 	public String getActualTitle() {

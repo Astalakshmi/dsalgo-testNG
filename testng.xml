@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<listeners>
-		<listener
-			class-name="com.DsAlgo.utilities.ItestListener"></listener>
 
+	<listeners>
+		<listener class-name="com.DsAlgo.utilities.ItestListener"></listener>
 	</listeners>
-	<!--<test thread-count="5" name="Testing Chrome">-->
-	 <test name="ChromeTest">
+
+
+	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 
 
-			<!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> <class name="com.DsAlgo.testCases.TC002_LoginTest"/> 
-				
-				<class name="com.DsAlgo.testCases.TC010_EachTestScenario" />
-				<class name="com.DsAlgo.testCases.TC002_LoginTest" />
-				
-				<class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
-				<class name="com.DsAlgo.testCases.TC010_HomeTest"/>
-				 -->
+		<!-- 	 <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> 
+		 <class name="com.DsAlgo.testCases.TC002_LoginTest"/> 
+			 <class name="com.DsAlgo.testCases.TC010_HomeTest"/> 
+			 <class name="com.DsAlgo.testCases.TC008_TreeTest"/>
+			 <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+			 <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+			 -->
 			
-			<class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+				  
+				 <class name="com.DsAlgo.testCases.TC001_RegisterTest"/>
+				
+			
+				
 
+			
 
 
 

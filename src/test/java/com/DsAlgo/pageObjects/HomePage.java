@@ -235,7 +235,6 @@ public class HomePage {
 
 		default:
 			throw new RuntimeException("Please click from the dropdown list from home page: ");
-
 		}
 	}
 
@@ -268,7 +267,6 @@ public class HomePage {
 
 		default:
 			throw new RuntimeException("Please click GetStarted Click Button from home page: ");
-
 		}
 	}
 
