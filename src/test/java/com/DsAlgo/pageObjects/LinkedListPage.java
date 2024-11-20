@@ -121,8 +121,7 @@ public class LinkedListPage {
 	}
 
 	public void clickRunBtn() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(runButton));
+		utilsObj.visibilityOf(runButton);
 		runButton.click();
 	}
 
@@ -133,9 +132,8 @@ public class LinkedListPage {
 	}
 
 	public String getOutput() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		WebElement outputElement = wait.until(ExpectedConditions.visibilityOf(output)); // Wait for output visibility
-		return outputElement.getText();
+		utilsObj.visibilityOfMoreWaitTime(output);
+		return output.getText();
 	}
 
 	public void clickPracticeLink() {
