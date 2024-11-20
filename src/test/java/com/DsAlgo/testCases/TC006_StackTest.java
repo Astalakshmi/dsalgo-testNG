@@ -1,18 +1,12 @@
 package com.DsAlgo.testCases;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.DsAlgo.pageObjects.HomePage;
-import com.DsAlgo.pageObjects.LinkedListPage;
 import com.DsAlgo.pageObjects.LoginPage;
 import com.DsAlgo.pageObjects.StackPage;
 import com.DsAlgo.testBase.BaseClass;
@@ -20,7 +14,7 @@ import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
-import com.DsAlgo.utilities.RetryAnalyzer;
+
 
 public class TC006_StackTest extends BaseClass {
 	private StackPage stackObject;
@@ -63,7 +57,6 @@ public class TC006_StackTest extends BaseClass {
 		}
 		stackObject = new StackPage(driver);
 		stackObject.clickGetStartedBtn();
-
 	}
 
 	private String getCurrentMethodName() {
@@ -80,7 +73,7 @@ public class TC006_StackTest extends BaseClass {
 	public void ValidateStackPageAllLinks(String linkNames, String expectedMessage) {
 		stackObject.clickTopicLink(linkNames);
 		Assert.assertEquals(stackObject.getActualTitle(), expectedMessage);
-		// LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
+		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
 	@Test(priority = 2, dataProvider = "ValidateStackTopicLinkTryHere", dataProviderClass = DataProviders.class)
@@ -88,7 +81,7 @@ public class TC006_StackTest extends BaseClass {
 		stackObject.clickTopicLink(linkNames);
 		stackObject.clicktryEditor();
 		Assert.assertEquals(stackObject.getActualTitle(), expectedMessage);
-		// LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
+		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
 	@Test(priority = 3, dataProvider = "StackTopicLinkTryEditorValidCode", dataProviderClass = DataProviders.class)
@@ -99,7 +92,6 @@ public class TC006_StackTest extends BaseClass {
 		stackObject.clickRunBtn();
 		Assert.assertEquals(stackObject.getOutput(), pythonCodeOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 4, dataProvider = "StackTopicLinkTryEditorInvalidCode", dataProviderClass = DataProviders.class)
@@ -112,7 +104,6 @@ public class TC006_StackTest extends BaseClass {
 		driver.switchTo().alert().accept();
 		Assert.assertEquals(actualError, expectedError);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 5, dataProvider = "ValidateStackPracticeQuestions", dataProviderClass = DataProviders.class)

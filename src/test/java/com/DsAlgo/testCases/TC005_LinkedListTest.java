@@ -2,16 +2,11 @@ package com.DsAlgo.testCases;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LinkedListPage;
 import com.DsAlgo.pageObjects.LoginPage;
@@ -19,8 +14,6 @@ import com.DsAlgo.testBase.BaseClass;
 import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
-import com.DsAlgo.utilities.ExtentTestManager;
-import com.DsAlgo.utilities.ItestListener;
 import com.DsAlgo.utilities.LoggerLoad;
 
 public class TC005_LinkedListTest extends BaseClass {
@@ -64,7 +57,6 @@ public class TC005_LinkedListTest extends BaseClass {
 		}
 		linkedlistObject = new LinkedListPage(driver);
 		linkedlistObject.clickGetStartedBtn();
-
 	}
 
 	private String getCurrentMethodName() {
@@ -73,7 +65,6 @@ public class TC005_LinkedListTest extends BaseClass {
 
 	@Test()
 	public void ValidateLinkedListGetStarted(Method method) {
-
 		Assert.assertEquals(linkedlistObject.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page. " + getCurrentMethodName());
 	}
@@ -101,7 +92,6 @@ public class TC005_LinkedListTest extends BaseClass {
 		linkedlistObject.clickRunBtn();
 		Assert.assertEquals(linkedlistObject.getOutput(), pythonCodeOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 4, dataProvider = "LinkedListTopicLinkTryEditorInvalidCode", dataProviderClass = DataProviders.class)
@@ -125,5 +115,4 @@ public class TC005_LinkedListTest extends BaseClass {
 			Assert.fail("No questions found");
 		}
 	}
-
 }

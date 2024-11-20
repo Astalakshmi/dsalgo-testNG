@@ -2,13 +2,9 @@ package com.DsAlgo.testCases;
 
 import java.io.IOException;
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LoginPage;
 import com.DsAlgo.pageObjects.RegisterPage;
@@ -18,13 +14,9 @@ import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 
-
-
-
 public class TC002_LoginTest extends BaseClass {
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
 
-	
 	HomePage homeObj;
 	ExcelFileReader excelFileReader = new ExcelFileReader(ConfigFileReader.getInstance().getExcelPath());
 	Map<String, String> keyPair;
@@ -33,13 +25,12 @@ public class TC002_LoginTest extends BaseClass {
 	public void reading() throws IOException {
 		keyPair = excelFileReader.getKeyPair("LoginCredentials");
 	}
-	
+
 	private String getCurrentMethodName() {
 		return StackWalker.getInstance().walk(s -> s.skip(1).findFirst()).get().getMethodName();
 	}
 
 	@Test(dataProvider = "ValidLoginData", dataProviderClass = DataProviders.class)
-
 	public void verify_validLogin(String username, String password, String expectedMessage) {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
@@ -56,11 +47,9 @@ public class TC002_LoginTest extends BaseClass {
 
 		Assert.assertEquals(loginObj.getLoginValidationMessage(), expectedMessage);
 		LoggerLoad.info("The user is on the " + driver.getTitle() + " home page and successfully logged in.");
-
 	}
 
-	@Test(priority=1,dataProvider = "InValidLoginData", dataProviderClass = DataProviders.class)
-
+	@Test(priority = 1, dataProvider = "InValidLoginData", dataProviderClass = DataProviders.class)
 	public void verify_inValidLogin(String username, String password, String expectedMessage) {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
@@ -104,8 +93,7 @@ public class TC002_LoginTest extends BaseClass {
 		}
 	}
 
-	@Test(priority=2)
-
+	@Test(priority = 2)
 	public void verifyDropdownWithoutLogin() {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
@@ -115,7 +103,6 @@ public class TC002_LoginTest extends BaseClass {
 	}
 
 	@Test(priority = 3)
-
 	public void verifyGetStartedWithoutLogin() {
 		HomePage homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
@@ -123,5 +110,4 @@ public class TC002_LoginTest extends BaseClass {
 		Assert.assertEquals(homeObj.getActualMessage(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("The User is seeing the alert message " + homeObj.getActualMessage());
 	}
-
-	}
+}

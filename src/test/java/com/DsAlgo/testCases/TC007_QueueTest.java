@@ -55,7 +55,6 @@ public class TC007_QueueTest extends BaseClass {
 
 	@Test()
 	public void ValidateQueueGetStarted() {
-
 		Assert.assertEquals(queueObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
@@ -95,7 +94,6 @@ public class TC007_QueueTest extends BaseClass {
 		driver.switchTo().alert().accept();
 		Assert.assertEquals(actualError, negativeOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 5, dataProvider = "ValidateQueuePracticeQuestions", dataProviderClass = DataProviders.class)

@@ -4,12 +4,11 @@
 	<!---<test thread-count="5" name="Test" /> -->
 	<listeners>
 		<listener class-name="com.DsAlgo.utilities.ItestListener" />
-		<!-- <listener class-name="com.DsAlgo.utilities.RetryListener"/> -->
+		<listener class-name="com.DsAlgo.utilities.RetryListener"/> 
 	</listeners>
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-
 			<class name="com.DsAlgo.testCases.TC001_RegisterTest" />
 			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
 			<class name="com.DsAlgo.testCases.TC003_DataStructureTest" />
@@ -20,10 +19,9 @@
 			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
-
 		</classes>
 	</test> <!-- Test -->
-
+	
 	<test name="FirefoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
 		<classes>
@@ -37,11 +35,9 @@
 			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
-
-
 		</classes>
 	</test> <!-- Test -->
-	
+
 	<test name="EdgeTest">
 		<parameter name="browser" value="Edge"></parameter>
 		<classes>
@@ -55,9 +51,6 @@
 			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
-
-
 		</classes>
 	</test> <!-- Test -->
-	
 </suite> <!-- Suite -->

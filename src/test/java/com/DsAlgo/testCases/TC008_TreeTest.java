@@ -6,9 +6,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LoginPage;
 import com.DsAlgo.pageObjects.TreePage;
@@ -51,7 +49,6 @@ public class TC008_TreeTest extends BaseClass {
 		}
 		treeObj = new TreePage(driver);
 		treeObj.getStartedclick();
-
 	}
 
 	private String getCurrentMethodName() {

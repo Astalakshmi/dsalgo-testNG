@@ -33,6 +33,7 @@ public class ItestListener extends BaseClass implements ITestListener {
 	@Override
 	public void onStart(ITestContext iTestContext) {
 		LoggerLoad.info(" onStart method " + iTestContext.getName());
+		// Reporter log is used to the see the logs in Emailable Report
 		Reporter.log("onStart method " + iTestContext.getName());
 	}
 
@@ -102,7 +103,6 @@ public class ItestListener extends BaseClass implements ITestListener {
 	}
 
 	public String getScreenshot(String testName, WebDriver driver) {
-
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
 		String screenshotPath = "target/Screenshots/screenshots" + testName + ".png";

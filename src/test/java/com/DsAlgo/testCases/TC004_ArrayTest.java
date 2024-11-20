@@ -84,7 +84,6 @@ public class TC004_ArrayTest extends BaseClass {
 	public void ValidateArrayTryEditorPositive(String linkNames, String validPythonCode, String pythonCodeOutput) {
 		arrayObj.clickTopicLink(linkNames);
 		arrayObj.clickArrTryHereBtn();
-		;
 		arrayObj.setCodePositive(validPythonCode);
 		arrayObj.clickTryHereRunBtn();
 		Assert.assertEquals(arrayObj.getTryHereOutputText(), pythonCodeOutput);
