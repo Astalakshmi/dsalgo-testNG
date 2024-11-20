@@ -6,10 +6,7 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-
 import com.DsAlgo.pageObjects.DataStructurePage;
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LoginPage;
@@ -19,8 +16,6 @@ import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 import com.DsAlgo.utilities.RetryAnalyzer;
-
-
 
 public class TC003_DataStructureTest extends BaseClass {
 
@@ -52,13 +47,10 @@ public class TC003_DataStructureTest extends BaseClass {
 			loginObj.setUsername(username);
 			loginObj.setLoginPassword(password);
 			loginObj.loginBtnclick();
-			
 		}
 
 		datastructureObj = new DataStructurePage(driver);
 		datastructureObj.getStartedclick();
-		
-		
 	}
 
 	private String getCurrentMethodName() {
@@ -67,36 +59,26 @@ public class TC003_DataStructureTest extends BaseClass {
 
 	@Test()
 	public void ValidateDataStructureGetStarted() {
-		
 		Assert.assertEquals(datastructureObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
 	@Test(priority = 1, dependsOnMethods = "ValidateDataStructureGetStarted")
-
 	public void ValidateDataStructureTimeComplexity() {
-
 		datastructureObj.timeComplexclick();
 		Assert.assertEquals(datastructureObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 2, dependsOnMethods = "ValidateDataStructureGetStarted")
-
 	public void ValidateTimeComplexityTryHere() {
 		datastructureObj.timeComplexclick();
 		datastructureObj.tryHereclick();
 		Assert.assertEquals(datastructureObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the Assessment Title in the Try Editor Page" + driver.getTitle() + " page.");
-
 	}
 
-	// -----@DataTC_006
-
-	@Test(priority = 3, dataProvider = "DataTryEditorValidCode", dataProviderClass = DataProviders.class,
-			dependsOnMethods = "ValidateDataStructureGetStarted")
-
+	@Test(priority = 3, dataProvider = "DataTryEditorValidCode", dataProviderClass = DataProviders.class, dependsOnMethods = "ValidateDataStructureGetStarted")
 	public void ValidateTimeComplexityTryEditorPositive(String validPythonCode, String pythonCodeOutput) {
 		datastructureObj.timeComplexclick();
 		datastructureObj.tryHereclick();
@@ -104,11 +86,9 @@ public class TC003_DataStructureTest extends BaseClass {
 		datastructureObj.clickRunBtn();
 		Assert.assertEquals(datastructureObj.getOutput(), pythonCodeOutput);
 		LoggerLoad.info("You are viewing the Assessment Title in the Try Editor Page" + driver.getTitle() + " page.");
-
 	}
 
-	@Test(priority = 4, dataProvider = "DataTryEditorInvalidCode", dataProviderClass = DataProviders.class,
-			dependsOnMethods = "ValidateDataStructureGetStarted")
+	@Test(priority = 4, dataProvider = "DataTryEditorInvalidCode", dataProviderClass = DataProviders.class, dependsOnMethods = "ValidateDataStructureGetStarted")
 	public void ValidateDataTryEditorNegative(String invalidCodeInput, String expectedError) {
 		datastructureObj.timeComplexclick();
 		datastructureObj.tryHereclick();
@@ -118,11 +98,9 @@ public class TC003_DataStructureTest extends BaseClass {
 		driver.switchTo().alert().accept();
 		Assert.assertEquals(actualError, expectedError);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
-
 	public void ValidatePraticeQuestions() {
 		datastructureObj.timeComplexclick();
 		datastructureObj.pracQuesclick();

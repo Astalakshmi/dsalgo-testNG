@@ -13,7 +13,6 @@ import org.testng.annotations.Parameters;
 
 import com.DsAlgo.utilities.ConfigFileReader;
 
-
 public class BaseClass {
 
 	public WebDriver driver;
@@ -27,13 +26,13 @@ public class BaseClass {
 			driver = new ChromeDriver();
 		} else if (browser.equals("Edge")) {
 			driver = new EdgeDriver();
-			
+
 		} else if (browser.equals("Firefox")) {
 			driver = new FirefoxDriver();
-		}else {
+		} else {
 			driver = new ChromeDriver();
 		}
-		System.out.println("The BaseClass driver : " +driver);
+		System.out.println("The BaseClass driver : " + driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(configFileReader.getHomeUrl());
@@ -43,9 +42,5 @@ public class BaseClass {
 	@AfterMethod
 	public void close() {
 		driver.quit();
-		
-		 
 	}
-	
-
 }

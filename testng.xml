@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" thread-count="5" parallel="tests">
- <!---<test thread-count="5" name="Test" /> --> 
-  <listeners>
-        <listener class-name="com.DsAlgo.utilities.ItestListener"/>
-      <!--  <listener class-name="com.DsAlgo.utilities.RetryListener"/> -->
-    </listeners>
-  <test name="ChromeTest" >
-  	<parameter name="browser" value="Chrome"></parameter>
-    <classes>
-	  <class name="com.DsAlgo.testCases.TC001_RegisterTest"/>
-      <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
-      <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
-      <class name="com.DsAlgo.testCases.TC004_ArrayTest"/>
-      <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
-      <class name="com.DsAlgo.testCases.TC006_StackTest"/>
-      <class name="com.DsAlgo.testCases.TC007_QueueTest"/>
-      <class name="com.DsAlgo.testCases.TC008_TreeTest"/>
-      <class name="com.DsAlgo.testCases.TC009_GraphTest"/>
-      <class name="com.DsAlgo.testCases.TC010_HomeTest"/>      
-    </classes>
-  </test> <!-- Test
+	<!---<test thread-count="5" name="Test" /> -->
+	<listeners>
+		<listener class-name="com.DsAlgo.utilities.ItestListener" />
+		<!-- <listener class-name="com.DsAlgo.utilities.RetryListener"/> -->
+	</listeners>
+	<test name="ChromeTest">
+		<parameter name="browser" value="Chrome"></parameter>
+		<classes>
 
-  <test name="FirefoxTest" >
-  	<parameter name="browser" value="Firefox"></parameter>
-    <classes>
-      
-    
-  
-       <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
-       <class name="com.DsAlgo.testCases.TC006_StackTest"/>
-        <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
-        
-      
-         
-    </classes>
-  </test>  -->
+			<class name="com.DsAlgo.testCases.TC001_RegisterTest" />
+			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
+			<class name="com.DsAlgo.testCases.TC003_DataStructureTest" />
+			<class name="com.DsAlgo.testCases.TC004_ArrayTest" />
+			<class name="com.DsAlgo.testCases.TC005_LinkedListTest" />
+			<class name="com.DsAlgo.testCases.TC006_StackTest" />
+			<class name="com.DsAlgo.testCases.TC007_QueueTest" />
+			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
+			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
+			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
+
+		</classes>
+	</test> <!-- Test -->
+
+	<test name="FirefoxTest">
+		<parameter name="browser" value="Firefox"></parameter>
+		<classes>
+			<class name="com.DsAlgo.testCases.TC001_RegisterTest" />
+			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
+			<class name="com.DsAlgo.testCases.TC003_DataStructureTest" />
+			<class name="com.DsAlgo.testCases.TC004_ArrayTest" />
+			<class name="com.DsAlgo.testCases.TC005_LinkedListTest" />
+			<class name="com.DsAlgo.testCases.TC006_StackTest" />
+			<class name="com.DsAlgo.testCases.TC007_QueueTest" />
+			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
+			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
+			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
+
+
+		</classes>
+	</test> <!-- Test -->
+	
+	<test name="EdgeTest">
+		<parameter name="browser" value="Edge"></parameter>
+		<classes>
+			<class name="com.DsAlgo.testCases.TC001_RegisterTest" />
+			<class name="com.DsAlgo.testCases.TC002_LoginTest" />
+			<class name="com.DsAlgo.testCases.TC003_DataStructureTest" />
+			<class name="com.DsAlgo.testCases.TC004_ArrayTest" />
+			<class name="com.DsAlgo.testCases.TC005_LinkedListTest" />
+			<class name="com.DsAlgo.testCases.TC006_StackTest" />
+			<class name="com.DsAlgo.testCases.TC007_QueueTest" />
+			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
+			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
+			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
+
+
+		</classes>
+	</test> <!-- Test -->
+	
 </suite> <!-- Suite -->

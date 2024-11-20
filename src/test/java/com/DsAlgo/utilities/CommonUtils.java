@@ -1,7 +1,6 @@
 package com.DsAlgo.utilities;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,7 +34,7 @@ public class CommonUtils {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOf(webElementName));
 	}
-	
+
 	public void visibilityOfExtraWaitTime(WebElement webElementName) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 		wait.until(ExpectedConditions.visibilityOf(webElementName));
@@ -43,13 +42,11 @@ public class CommonUtils {
 
 	public void elementToBeClickableWaitTime(WebElement webElementName) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(webElementName));
+		wait.until(ExpectedConditions.elementToBeClickable(webElementName));
 	}
 
 	public void attributeToBeWaitTime(WebElement webElementName, String attributeName, String attributeValue) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.attributeToBe(webElementName, attributeName, attributeValue));
 	}
-
-
 }

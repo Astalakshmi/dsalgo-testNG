@@ -15,10 +15,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.DsAlgo.utilities.CommonUtils;
 
-
 public class StackPage {
 	WebDriver driver;
-	 CommonUtils utilsObj = CommonUtils.getInstance();
+	CommonUtils utilsObj = CommonUtils.getInstance();
 
 	@FindBy(xpath = "//h5[text()='Stack']/../a")
 	WebElement getStartedButton;
@@ -43,10 +42,10 @@ public class StackPage {
 
 	@FindBy(xpath = "//button")
 	WebElement runButton;
-	
+
 	@FindBy(xpath = "//*[@id='output']")
 	WebElement output;
-	
+
 	@FindBy(id = "answer_form")
 	WebElement answerForm;
 
@@ -56,7 +55,7 @@ public class StackPage {
 	public void clickGetStartedBtn() {
 		getStartedButton.click();
 	}
-	
+
 	public void clickTopicLink(String topicXpath) {
 		switch (topicXpath) {
 		case "Operations in Stack":
@@ -71,17 +70,15 @@ public class StackPage {
 			applicationsLink.click();
 			break;
 
-		
-	     default:
+		default:
 			throw new RuntimeException("Please pass the topic name: ");
-			
 		}
 	}
-
 
 	public void clicktryEditor() {
 		tryEditor.click();
 	}
+
 	public void setCodePositive(String code) {
 		answerForm.click();
 		inputCode.sendKeys(code);
@@ -109,7 +106,6 @@ public class StackPage {
 		WebElement outputElement = wait.until(ExpectedConditions.visibilityOf(output)); // Wait for output visibility
 		return outputElement.getText();
 	}
-
 
 	public void clickPracticeLink() {
 		stackPracticeLink.click();

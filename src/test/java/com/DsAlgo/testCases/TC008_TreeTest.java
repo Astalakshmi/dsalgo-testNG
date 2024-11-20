@@ -18,8 +18,6 @@ import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 
-
-
 public class TC008_TreeTest extends BaseClass {
 
 	HomePage homeObj;
@@ -89,7 +87,6 @@ public class TC008_TreeTest extends BaseClass {
 		treeObj.clickRunBtn();
 		Assert.assertEquals(treeObj.getOutput(), pythonCodeOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 4, dataProvider = "TreeTopicLinkTryEditorInvalidCode", dataProviderClass = DataProviders.class)
@@ -102,7 +99,6 @@ public class TC008_TreeTest extends BaseClass {
 		driver.switchTo().alert().accept();
 		Assert.assertEquals(actualError, expectedError);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
 
 	@Test(priority = 5, dataProvider = "ValidateTreePracticeQuestions", dataProviderClass = DataProviders.class)
@@ -114,5 +110,4 @@ public class TC008_TreeTest extends BaseClass {
 			Assert.fail("No questions found");
 		}
 	}
-
 }

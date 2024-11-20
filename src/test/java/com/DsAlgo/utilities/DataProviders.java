@@ -1,13 +1,9 @@
 package com.DsAlgo.utilities;
 
 import java.io.IOException;
-import java.util.Arrays;
-
 import org.testng.annotations.DataProvider;
 
 public class DataProviders {
-	
-
 
 	ExcelFileReader excelFileReader = new ExcelFileReader(ConfigFileReader.getInstance().getExcelPath());
 
@@ -31,8 +27,6 @@ public class DataProviders {
 
 	@DataProvider(name = "RegisterInvalidData")
 	public String[][] getRegisterInvalidData() throws IOException {
-
-		int totalrows = excelFileReader.getRowCount("RegisterPage");
 		int totalcols = excelFileReader.getCellCount("RegisterPage", 1);
 		String[][] registerInvalidData = new String[8][totalcols];
 		for (int i = 2; i <= 9; i++) { // i=2 because row 1 i.e,i=1 is positive testcase. It's worked.
@@ -61,7 +55,6 @@ public class DataProviders {
 
 	@DataProvider(name = "InValidLoginData")
 	public String[][] getInValidLoginData() throws IOException {
-
 		int totalrows = excelFileReader.getRowCount("LoginCredentials");
 		int totalcols = excelFileReader.getCellCount("LoginCredentials", 1);
 		System.out.println("Total Rows = " + totalrows + ", Total Columns = " + totalcols);
@@ -72,7 +65,6 @@ public class DataProviders {
 				invalidLoginData[i - 2][j] = excelFileReader.getCellData("LoginCredentials", i, j);
 				System.out.println(invalidLoginData[i - 2][j]);
 			}
-
 		}
 		return invalidLoginData;
 	}
@@ -137,7 +129,7 @@ public class DataProviders {
 		}
 		return inValidCode;
 	}
-	
+
 	// ---------------------@DataProvider for Linked List Module Page----------
 
 	@DataProvider(name = "ValidateLinkedListTopicLink")
@@ -153,8 +145,6 @@ public class DataProviders {
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 1);
-			//System.out.print("The data is " + topicData[i - 2][0] + ",");
-			//System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
 		return topicData;
 	}
@@ -168,8 +158,6 @@ public class DataProviders {
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 2);
-			//System.out.print("The data is " + topicData[i - 2][0] + ",");
-			//System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
 		return topicData;
 	}
@@ -177,13 +165,11 @@ public class DataProviders {
 	@DataProvider(name = "LinkedListTopicLinkTryEditorValidCode")
 	public String[][] getLinkedListTopicLinkTryEditorPositive() throws IOException {
 		int rowsLinkedListPageSheet = excelFileReader.getRowCount("LinkedListPage");
-
-		String[][] validCode = new String[rowsLinkedListPageSheet - 1][3];// 
+		String[][] validCode = new String[rowsLinkedListPageSheet - 1][3];//
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			validCode[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			validCode[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 3);
 			validCode[i - 2][2] = excelFileReader.getCellData("LinkedListPage", i, 4);
-
 		}
 		return validCode;
 	}
@@ -191,14 +177,11 @@ public class DataProviders {
 	@DataProvider(name = "LinkedListTopicLinkTryEditorInvalidCode")
 	public String[][] getLinkedListTopicLinkTryEditorNegative() throws IOException {
 		int rowsStackPageSheet = excelFileReader.getRowCount("LinkedListPage");
-
 		String[][] inValidCode = new String[rowsStackPageSheet - 1][3];// [15 rows -2]
 		for (int i = 2; i <= rowsStackPageSheet; i++) {
 			inValidCode[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			inValidCode[i - 2][1] = excelFileReader.getCellData("LinkedListPage", i, 5);
 			inValidCode[i - 2][2] = excelFileReader.getCellData("LinkedListPage", i, 6);
-
-
 		}
 		return inValidCode;
 	}
@@ -212,12 +195,10 @@ public class DataProviders {
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("LinkedListPage", i, 0);
 			System.out.print("The data is " + topicData[i - 2][0] + ",");
-			
 		}
 		return topicData;
-
 	}
-	
+
 	// ---------------------@DataProvider for Stack Module Page----------
 
 	@DataProvider(name = "ValidateStackTopicLink")
@@ -229,8 +210,6 @@ public class DataProviders {
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("StackPage", i, 1);
-			//System.out.print("The data is " + topicData[i - 2][0] + ",");
-			//System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
 		return topicData;
 	}
@@ -244,8 +223,6 @@ public class DataProviders {
 		for (int i = 2; i <= rowsLinkedListPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
 			topicData[i - 2][1] = excelFileReader.getCellData("StackPage", i, 2);
-			//System.out.print("The data is " + topicData[i - 2][0] + ",");
-			//System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
 		return topicData;
 	}
@@ -259,7 +236,6 @@ public class DataProviders {
 			validCode[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
 			validCode[i - 2][1] = excelFileReader.getCellData("StackPage", i, 3);
 			validCode[i - 2][2] = excelFileReader.getCellData("StackPage", i, 4);
-
 		}
 		return validCode;
 	}
@@ -267,14 +243,11 @@ public class DataProviders {
 	@DataProvider(name = "StackTopicLinkTryEditorInvalidCode")
 	public String[][] getStackTopicLinkTryEditorNegative() throws IOException {
 		int rowsStackPageSheet = excelFileReader.getRowCount("StackPage");
-
 		String[][] inValidCode = new String[rowsStackPageSheet - 1][3];// [15 rows -2]
 		for (int i = 2; i <= rowsStackPageSheet; i++) {
 			inValidCode[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
 			inValidCode[i - 2][1] = excelFileReader.getCellData("StackPage", i, 5);
 			inValidCode[i - 2][2] = excelFileReader.getCellData("StackPage", i, 6);
-
-
 		}
 		return inValidCode;
 	}
@@ -288,325 +261,306 @@ public class DataProviders {
 		for (int i = 2; i <= rowsStackPageSheet; i++) {
 			topicData[i - 2][0] = excelFileReader.getCellData("StackPage", i, 0);
 			System.out.print("The data is " + topicData[i - 2][0] + ",");
-			
+
 		}
 		return topicData;
 	}
-	
-	//------------------------------Queue Page ----------------------------------------
 
-		@DataProvider(name = "ValidateQueueTopicLink")
-		public String[][] getQueueTopicLink() throws IOException {
-			int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
-			int totalcols = excelFileReader.getCellCount("QueuePage", 2);
-			System.out.println("The Row is :" + rowsQueuePageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsQueuePageSheet - 1][2];
-			for (int i = 2; i < 6; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 1);
-			}
-			return topicData;
+	// ---------------------------Queue Page----------------------------------------
+
+	@DataProvider(name = "ValidateQueueTopicLink")
+	public String[][] getQueueTopicLink() throws IOException {
+		int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
+		int totalcols = excelFileReader.getCellCount("QueuePage", 2);
+		System.out.println("The Row is :" + rowsQueuePageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsQueuePageSheet - 1][2];
+		for (int i = 2; i < 6; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 1);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateQueueTopicLinkTryHere")
-		public String[][] getQueueTopicLinkTryHere() throws IOException {
-			int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
-			int totalcols = excelFileReader.getCellCount("QueuePage", 2);
-			System.out.println("The Row is : " + rowsQueuePageSheet + " Columns : " + totalcols);
-			String[][] topicData = new String[rowsQueuePageSheet - 1][2];
-			for (int i = 2; i < 6; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 2);
-			}
-			return topicData;
+	@DataProvider(name = "ValidateQueueTopicLinkTryHere")
+	public String[][] getQueueTopicLinkTryHere() throws IOException {
+		int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
+		int totalcols = excelFileReader.getCellCount("QueuePage", 2);
+		System.out.println("The Row is : " + rowsQueuePageSheet + " Columns : " + totalcols);
+		String[][] topicData = new String[rowsQueuePageSheet - 1][2];
+		for (int i = 2; i < 6; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 2);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateQueueTopicLinkTryEditorPositive")
-		public String[][] getQueueTopicLinkTryEditor() throws IOException {
-			int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
-
-			int totalcols = excelFileReader.getCellCount("QueuePage", 2);
-
-			System.out.println("The Total Row is : " + rowsQueuePageSheet + " Total Columns : " + totalcols);
-
-			String[][] topicData = new String[rowsQueuePageSheet - 2][3];
-			for (int i = 2; i < rowsQueuePageSheet; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 3);
-				topicData[i - 2][2] = excelFileReader.getCellData("QueuePage", i, 4);
-			}
-			return topicData;
+	@DataProvider(name = "ValidateQueueTopicLinkTryEditorPositive")
+	public String[][] getQueueTopicLinkTryEditor() throws IOException {
+		int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
+		int totalcols = excelFileReader.getCellCount("QueuePage", 2);
+		System.out.println("The Total Row is : " + rowsQueuePageSheet + " Total Columns : " + totalcols);
+		String[][] topicData = new String[rowsQueuePageSheet - 2][3];
+		for (int i = 2; i < rowsQueuePageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 3);
+			topicData[i - 2][2] = excelFileReader.getCellData("QueuePage", i, 4);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateQueueTopicLinkTryEditorNegative")
-		public String[][] getQueueTopicLinkTryEditorNegative() throws IOException {
-			int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
-
-			int totalcols = excelFileReader.getCellCount("QueuePage", 2);
-
-			System.out.println("The Total Row is : " + rowsQueuePageSheet + " Total Columns : " + totalcols);
-
-			String[][] topicData = new String[rowsQueuePageSheet - 2][3];
-			for (int i = 2; i < rowsQueuePageSheet; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 5);
-				topicData[i - 2][2] = excelFileReader.getCellData("QueuePage", i, 6);
-			}
-			return topicData;
-
+	@DataProvider(name = "ValidateQueueTopicLinkTryEditorNegative")
+	public String[][] getQueueTopicLinkTryEditorNegative() throws IOException {
+		int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
+		int totalcols = excelFileReader.getCellCount("QueuePage", 2);
+		System.out.println("The Total Row is : " + rowsQueuePageSheet + " Total Columns : " + totalcols);
+		String[][] topicData = new String[rowsQueuePageSheet - 2][3];
+		for (int i = 2; i < rowsQueuePageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("QueuePage", i, 5);
+			topicData[i - 2][2] = excelFileReader.getCellData("QueuePage", i, 6);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateQueuePracticeQuestions")
-		public String[][] getQueuePracticeQuestions() throws IOException {
-			int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
-			int totalcols = excelFileReader.getCellCount("QueuePage", 2);
-			System.out.println("The Row is :" + rowsQueuePageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsQueuePageSheet - 1][1];
-			for (int i = 2; i < 6; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
-
-			}
-			return topicData;
+	@DataProvider(name = "ValidateQueuePracticeQuestions")
+	public String[][] getQueuePracticeQuestions() throws IOException {
+		int rowsQueuePageSheet = excelFileReader.getRowCount("QueuePage");
+		int totalcols = excelFileReader.getCellCount("QueuePage", 2);
+		System.out.println("The Row is :" + rowsQueuePageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsQueuePageSheet - 1][1];
+		for (int i = 2; i < 6; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("QueuePage", i, 0);
 		}
+		return topicData;
+	}
 
-		// -----------------------------Tree Page---------------------------------------
+	// -----------------------------Tree Page---------------------------------------
 
-		@DataProvider(name = "ValidateTreeTopicLink")
-		public String[][] getTreeTopicLink() throws IOException {
-			int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
-			int totalcols = excelFileReader.getCellCount("TreePage", 2);
-			System.out.println("The Row is :" + rowsTreePageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsTreePageSheet - 1][2];
-			for (int i = 2; i < 15; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("TreePage", i, 1);
-				System.out.print("The data is " + topicData[i - 2][0] + ",");
-				System.out.println("The data is " + topicData[i - 2][1] + ",");
-			}
-			return topicData;
+	@DataProvider(name = "ValidateTreeTopicLink")
+	public String[][] getTreeTopicLink() throws IOException {
+		int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
+		int totalcols = excelFileReader.getCellCount("TreePage", 2);
+		System.out.println("The Row is :" + rowsTreePageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsTreePageSheet - 1][2];
+		for (int i = 2; i < 15; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("TreePage", i, 1);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateTreeTopicLinkTryHere")
-		public String[][] getTreeTopicLinkTryHere() throws IOException {
-			int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
-			int totalcols = excelFileReader.getCellCount("TreePage", 2);
-			System.out.println("The Row is : " + rowsTreePageSheet + " Columns : " + totalcols);
-			String[][] topicData = new String[rowsTreePageSheet - 1][2];
-			for (int i = 2; i < 15; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("TreePage", i, 2);
-				System.out.print("The data is " + topicData[i - 2][0] + ",");
-				System.out.println("The data is " + topicData[i - 2][1] + ",");
-			}
-			return topicData;
+	@DataProvider(name = "ValidateTreeTopicLinkTryHere")
+	public String[][] getTreeTopicLinkTryHere() throws IOException {
+		int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
+		int totalcols = excelFileReader.getCellCount("TreePage", 2);
+		System.out.println("The Row is : " + rowsTreePageSheet + " Columns : " + totalcols);
+		String[][] topicData = new String[rowsTreePageSheet - 1][2];
+		for (int i = 2; i < 15; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("TreePage", i, 2);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "TreeTopicLinkTryEditorValidCode")
-		public String[][] getTreeTopicLinkTryEditorPositive() throws IOException {
-			int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
-			String[][] validCode = new String[rowsTreePageSheet - 2][3];
-			for (int i = 2; i < rowsTreePageSheet; i++) {
-				validCode[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
-				validCode[i - 2][1] = excelFileReader.getCellData("TreePage", i, 3);
-				validCode[i - 2][2] = excelFileReader.getCellData("TreePage", i, 4);
-			}
-			return validCode;
+	@DataProvider(name = "TreeTopicLinkTryEditorValidCode")
+	public String[][] getTreeTopicLinkTryEditorPositive() throws IOException {
+		int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
+		String[][] validCode = new String[rowsTreePageSheet - 2][3];
+		for (int i = 2; i < rowsTreePageSheet; i++) {
+			validCode[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
+			validCode[i - 2][1] = excelFileReader.getCellData("TreePage", i, 3);
+			validCode[i - 2][2] = excelFileReader.getCellData("TreePage", i, 4);
 		}
+		return validCode;
+	}
 
-		@DataProvider(name = "TreeTopicLinkTryEditorInvalidCode")
-		public String[][] getTreeTopicLinkTryEditorNegative() throws IOException {
-			int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
-			String[][] inValidCode = new String[rowsTreePageSheet - 2][3];
-			for (int i = 2; i < rowsTreePageSheet; i++) {
-				inValidCode[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
-				inValidCode[i - 2][1] = excelFileReader.getCellData("TreePage", i, 5);
-				inValidCode[i - 2][2] = excelFileReader.getCellData("TreePage", i, 6);
-			}
-			return inValidCode;
+	@DataProvider(name = "TreeTopicLinkTryEditorInvalidCode")
+	public String[][] getTreeTopicLinkTryEditorNegative() throws IOException {
+		int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
+		String[][] inValidCode = new String[rowsTreePageSheet - 2][3];
+		for (int i = 2; i < rowsTreePageSheet; i++) {
+			inValidCode[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
+			inValidCode[i - 2][1] = excelFileReader.getCellData("TreePage", i, 5);
+			inValidCode[i - 2][2] = excelFileReader.getCellData("TreePage", i, 6);
 		}
+		return inValidCode;
+	}
 
-		@DataProvider(name = "ValidateTreePracticeQuestions")
-		public String[][] getTreePracticeQuestions() throws IOException {
-			int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
-			int totalcols = excelFileReader.getCellCount("TreePage", 2);
-			System.out.println("The Row is :" + rowsTreePageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsTreePageSheet - 1][1];
-			for (int i = 2; i < 15; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
-			}
-			return topicData;
+	@DataProvider(name = "ValidateTreePracticeQuestions")
+	public String[][] getTreePracticeQuestions() throws IOException {
+		int rowsTreePageSheet = excelFileReader.getRowCount("TreePage");
+		int totalcols = excelFileReader.getCellCount("TreePage", 2);
+		System.out.println("The Row is :" + rowsTreePageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsTreePageSheet - 1][1];
+		for (int i = 2; i < 15; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("TreePage", i, 0);
 		}
+		return topicData;
+	}
 
-		// -------------------Graph Page ---------------------------------------------
+	// -------------------Graph Page ---------------------------------------------
 
-		@DataProvider(name = "ValidateGraphTopicLink")
-		public String[][] getGraphTopicLink() throws IOException {
-			int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
-			int totalcols = excelFileReader.getCellCount("GraphPage", 2);
-			System.out.println("The Row is :" + rowsGraphPageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsGraphPageSheet - 1][2];
-			for (int i = 2; i < 4; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 1);
-			}
-			return topicData;
+	@DataProvider(name = "ValidateGraphTopicLink")
+	public String[][] getGraphTopicLink() throws IOException {
+		int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
+		int totalcols = excelFileReader.getCellCount("GraphPage", 2);
+		System.out.println("The Row is :" + rowsGraphPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsGraphPageSheet - 1][2];
+		for (int i = 2; i < 4; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 1);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateGraphTopicLinkTryHere")
-		public String[][] getGraphTopicLinkTryHere() throws IOException {
-			int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
-			int totalcols = excelFileReader.getCellCount("GraphPage", 2);
-			System.out.println("The Row is : " + rowsGraphPageSheet + " Columns : " + totalcols);
-			String[][] topicData = new String[rowsGraphPageSheet - 1][2];
-			for (int i = 2; i < 4; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 2);
-			}
-			return topicData;
+	@DataProvider(name = "ValidateGraphTopicLinkTryHere")
+	public String[][] getGraphTopicLinkTryHere() throws IOException {
+		int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
+		int totalcols = excelFileReader.getCellCount("GraphPage", 2);
+		System.out.println("The Row is : " + rowsGraphPageSheet + " Columns : " + totalcols);
+		String[][] topicData = new String[rowsGraphPageSheet - 1][2];
+		for (int i = 2; i < 4; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 2);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateGraphTopicLinkTryEditorPositive")
-		public String[][] getGraphTopicLinkTryEditorPositive() throws IOException {
-			int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
+	@DataProvider(name = "ValidateGraphTopicLinkTryEditorPositive")
+	public String[][] getGraphTopicLinkTryEditorPositive() throws IOException {
+		int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
 
-			int totalcols = excelFileReader.getCellCount("GraphPage", 2);
+		int totalcols = excelFileReader.getCellCount("GraphPage", 2);
 
-			System.out.println("The Total Row is : " + rowsGraphPageSheet + " Total Columns : " + totalcols);
+		System.out.println("The Total Row is : " + rowsGraphPageSheet + " Total Columns : " + totalcols);
 
-			String[][] topicData = new String[rowsGraphPageSheet - 2][3];
-			for (int i = 2; i < rowsGraphPageSheet; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 3);
-				topicData[i - 2][2] = excelFileReader.getCellData("GraphPage", i, 4);
-			}
-			return topicData;
-
+		String[][] topicData = new String[rowsGraphPageSheet - 2][3];
+		for (int i = 2; i < rowsGraphPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 3);
+			topicData[i - 2][2] = excelFileReader.getCellData("GraphPage", i, 4);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateGraphTopicLinkTryEditorNegative")
-		public String[][] getGraphTopicLinkTryEditorNegative() throws IOException {
-			int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
+	@DataProvider(name = "ValidateGraphTopicLinkTryEditorNegative")
+	public String[][] getGraphTopicLinkTryEditorNegative() throws IOException {
+		int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
 
-			int totalcols = excelFileReader.getCellCount("GraphPage", 2);
+		int totalcols = excelFileReader.getCellCount("GraphPage", 2);
 
-			System.out.println("The Total Row is : " + rowsGraphPageSheet + " Total Columns : " + totalcols);
+		System.out.println("The Total Row is : " + rowsGraphPageSheet + " Total Columns : " + totalcols);
 
-			String[][] topicData = new String[rowsGraphPageSheet - 2][3];
-			for (int i = 2; i < rowsGraphPageSheet; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
-				topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 5);
-				topicData[i - 2][2] = excelFileReader.getCellData("GraphPage", i, 6);
-			}
-			return topicData;
-
+		String[][] topicData = new String[rowsGraphPageSheet - 2][3];
+		for (int i = 2; i < rowsGraphPageSheet; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("GraphPage", i, 5);
+			topicData[i - 2][2] = excelFileReader.getCellData("GraphPage", i, 6);
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateGraphPracticeQuestions")
-		public String[][] getGraphPracticeQuestions() throws IOException {
-			int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
-			int totalcols = excelFileReader.getCellCount("GraphPage", 2);
-			System.out.println("The Row is :" + rowsGraphPageSheet + "Columns : " + totalcols);
-			String[][] topicData = new String[rowsGraphPageSheet - 1][1];
-			for (int i = 2; i < 4; i++) {
-				topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
-
-			}
-			return topicData;
+	@DataProvider(name = "ValidateGraphPracticeQuestions")
+	public String[][] getGraphPracticeQuestions() throws IOException {
+		int rowsGraphPageSheet = excelFileReader.getRowCount("GraphPage");
+		int totalcols = excelFileReader.getCellCount("GraphPage", 2);
+		System.out.println("The Row is :" + rowsGraphPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsGraphPageSheet - 1][1];
+		for (int i = 2; i < 4; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("GraphPage", i, 0);
 		}
+		return topicData;
+	}
 
-
-	
 //	 ---------------------@DataProvider for Array Module Page----------
-	
-			@DataProvider(name = "ValidateArrayTopicLink")
-			public String[][] getArrayTopicLink() throws IOException {
-				int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
-				int totalcols = excelFileReader.getCellCount("ArrayPage", 2);
-				System.out.println("The Row is :" + rowsArrayPageSheet + "Columns : " + totalcols);
-				String[][] topicData = new String[rowsArrayPageSheet - 1][2];
-				for (int i = 2; i <= 5; i++) {
-					topicData[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
-					topicData[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 1);
-					System.out.print("The data is " + topicData[i - 2][0] + ",");
-					System.out.println("The data is " + topicData[i - 2][1] + ",");
-				}
-				return topicData;
-			}
 
-			@DataProvider(name = "ValidateArrayTopicLinkTryHere")
-			public String[][] getArrayTopicLinkTryHere() throws IOException {
-				int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
-				int totalcols = excelFileReader.getCellCount("ArrayPage", 2); // WE can skip Lip
-				System.out.println("The Row is : " + rowsArrayPageSheet + " Columns : " + totalcols);
-				String[][] topicData = new String[rowsArrayPageSheet - 1][2];
-				for (int i = 2; i <= 5; i++) {
-					topicData[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
-					topicData[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 2);
-					System.out.print("The data is " + topicData[i - 2][0] + ",");
-					System.out.println("The data is " + topicData[i - 2][1] + ",");
-				}
-				return topicData;
-			}
-
-		@DataProvider(name = "ArrayTopicLinkTryEditorValidCode")
-		public String[][] getArrayTopicLinkTryEditorPositive() throws IOException {
-			int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
-
-			String[][] validCode = new String[rowsArrayPageSheet - 1][3];// [15 rows -2]
-			System.out.println("rowsArrayPageSheet=="+rowsArrayPageSheet);
-			for (int i = 2; i <= rowsArrayPageSheet; i++) {
-				validCode[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
-				validCode[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 3);
-				validCode[i - 2][2] = excelFileReader.getCellData("ArrayPage", i, 4);
-				System.out.println("The data is " + validCode[i - 2][0] + ",");
-				System.out.println("The data is " + validCode[i - 2][1] + ",");
-				System.out.println("The data is " + validCode[i - 2][2] + ",");
-			}
-			return validCode;
+	@DataProvider(name = "ValidateArrayTopicLink")
+	public String[][] getArrayTopicLink() throws IOException {
+		int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
+		int totalcols = excelFileReader.getCellCount("ArrayPage", 2);
+		System.out.println("The Row is :" + rowsArrayPageSheet + "Columns : " + totalcols);
+		String[][] topicData = new String[rowsArrayPageSheet - 1][2];
+		for (int i = 2; i <= 5; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 1);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ArrayTopicLinkTryEditorInvalidCode")
-		public String[][] getArrayTopicLinkTryEditorNegative() throws IOException {
-			int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
-			String[][] inValidCode = new String[rowsArrayPageSheet - 1][3];// [15 rows -2]
-			for (int i = 2; i <= rowsArrayPageSheet; i++) {
-				inValidCode[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
-				inValidCode[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 5);
-				inValidCode[i - 2][2] = excelFileReader.getCellData("ArrayPage", i, 6);
-				System.out.println("The data is " + inValidCode[i - 2][0] + ",");
-				System.out.println("The data is " + inValidCode[i - 2][1] + ",");
-				System.out.println("The data is " + inValidCode[i - 2][2] + ",");
-
-			}
-			return inValidCode;
+	@DataProvider(name = "ValidateArrayTopicLinkTryHere")
+	public String[][] getArrayTopicLinkTryHere() throws IOException {
+		int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
+		int totalcols = excelFileReader.getCellCount("ArrayPage", 2); // WE can skip Lip
+		System.out.println("The Row is : " + rowsArrayPageSheet + " Columns : " + totalcols);
+		String[][] topicData = new String[rowsArrayPageSheet - 1][2];
+		for (int i = 2; i <= 5; i++) {
+			topicData[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
+			topicData[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 2);
+			System.out.print("The data is " + topicData[i - 2][0] + ",");
+			System.out.println("The data is " + topicData[i - 2][1] + ",");
 		}
+		return topicData;
+	}
 
-		@DataProvider(name = "ValidateArrayPracticeQuestionsRun")
-		public String[][] getArrayPracticeQuestionsRun() throws IOException {
-			int rowsForQuestionRun = 8;
-			String[][] practiceQuestions =  new String[rowsForQuestionRun][3];
-			for(int i=1; i<=rowsForQuestionRun ;i++) {
-				practiceQuestions[i-1][0] = excelFileReader.getCellData("PracticeQns",i, 0);
-				practiceQuestions[i-1][1] = excelFileReader.getCellData("PracticeQns",i, 1);
-				practiceQuestions[i-1][2] = excelFileReader.getCellData("PracticeQns",i, 2);
-			}
-			return practiceQuestions;
+	@DataProvider(name = "ArrayTopicLinkTryEditorValidCode")
+	public String[][] getArrayTopicLinkTryEditorPositive() throws IOException {
+		int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
+
+		String[][] validCode = new String[rowsArrayPageSheet - 1][3];// [15 rows -2]
+		System.out.println("rowsArrayPageSheet==" + rowsArrayPageSheet);
+		for (int i = 2; i <= rowsArrayPageSheet; i++) {
+			validCode[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
+			validCode[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 3);
+			validCode[i - 2][2] = excelFileReader.getCellData("ArrayPage", i, 4);
+			System.out.println("The data is " + validCode[i - 2][0] + ",");
+			System.out.println("The data is " + validCode[i - 2][1] + ",");
+			System.out.println("The data is " + validCode[i - 2][2] + ",");
 		}
-		
-		@DataProvider(name = "ValidateArrayPracticeQuestionsSubmit")
-		public String[][] getArrayPracticeQuestionsSubmit() throws IOException {
-			int rowsForQuestionSubmit = 4;
-			String[][] practiceQuestions =  new String[rowsForQuestionSubmit][3];
-			for(int i=9; i<=12 ;i++) {
-				practiceQuestions[i-9][0] = excelFileReader.getCellData("PracticeQns",i, 0);
-				practiceQuestions[i-9][1] = excelFileReader.getCellData("PracticeQns",i, 1);
-				practiceQuestions[i-9][2] = excelFileReader.getCellData("PracticeQns",i, 2);
-			}
-			return practiceQuestions;
+		return validCode;
+	}
+
+	@DataProvider(name = "ArrayTopicLinkTryEditorInvalidCode")
+	public String[][] getArrayTopicLinkTryEditorNegative() throws IOException {
+		int rowsArrayPageSheet = excelFileReader.getRowCount("ArrayPage");
+		String[][] inValidCode = new String[rowsArrayPageSheet - 1][3];// [15 rows -2]
+		for (int i = 2; i <= rowsArrayPageSheet; i++) {
+			inValidCode[i - 2][0] = excelFileReader.getCellData("ArrayPage", i, 0);
+			inValidCode[i - 2][1] = excelFileReader.getCellData("ArrayPage", i, 5);
+			inValidCode[i - 2][2] = excelFileReader.getCellData("ArrayPage", i, 6);
+			System.out.println("The data is " + inValidCode[i - 2][0] + ",");
+			System.out.println("The data is " + inValidCode[i - 2][1] + ",");
+			System.out.println("The data is " + inValidCode[i - 2][2] + ",");
 		}
+		return inValidCode;
+	}
 
+	@DataProvider(name = "ValidateArrayPracticeQuestionsRun")
+	public String[][] getArrayPracticeQuestionsRun() throws IOException {
+		int rowsForQuestionRun = 8;
+		String[][] practiceQuestions = new String[rowsForQuestionRun][3];
+		for (int i = 1; i <= rowsForQuestionRun; i++) {
+			practiceQuestions[i - 1][0] = excelFileReader.getCellData("PracticeQns", i, 0);
+			practiceQuestions[i - 1][1] = excelFileReader.getCellData("PracticeQns", i, 1);
+			practiceQuestions[i - 1][2] = excelFileReader.getCellData("PracticeQns", i, 2);
+		}
+		return practiceQuestions;
+	}
 
-	
-	
-
+	@DataProvider(name = "ValidateArrayPracticeQuestionsSubmit")
+	public String[][] getArrayPracticeQuestionsSubmit() throws IOException {
+		int rowsForQuestionSubmit = 4;
+		String[][] practiceQuestions = new String[rowsForQuestionSubmit][3];
+		for (int i = 9; i <= 12; i++) {
+			practiceQuestions[i - 9][0] = excelFileReader.getCellData("PracticeQns", i, 0);
+			practiceQuestions[i - 9][1] = excelFileReader.getCellData("PracticeQns", i, 1);
+			practiceQuestions[i - 9][2] = excelFileReader.getCellData("PracticeQns", i, 2);
+		}
+		return practiceQuestions;
+	}
 }

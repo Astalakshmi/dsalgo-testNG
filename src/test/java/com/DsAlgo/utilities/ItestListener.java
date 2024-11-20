@@ -14,19 +14,18 @@ import com.DsAlgo.testBase.BaseClass;
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Attachment;
 
-
 public class ItestListener extends BaseClass implements ITestListener {
 	private static String getTestMethodName(ITestResult iTestResult) {
 		return iTestResult.getMethod().getConstructorOrMethod().getName();
 	}
-	
-	//for allure report
+
+	// for allure report
 	@Attachment
 	public byte[] saveFailureScreenshot(WebDriver driver) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
-	
-	@Attachment(value= "{0}", type="text/plain")
+
+	@Attachment(value = "{0}", type = "text/plain")
 	public static String saveTextLog(String message) {
 		return message;
 	}
@@ -65,7 +64,7 @@ public class ItestListener extends BaseClass implements ITestListener {
 	public void onTestFailure(ITestResult iTestResult) {
 		LoggerLoad.info(getTestMethodName(iTestResult) + " Test is failed.");
 		Reporter.log("onTestFailure" + iTestResult.getName());
-		
+
 		// Get driver from BaseTest and assign to local webdriver variable.
 		Object testClass = iTestResult.getInstance();
 		WebDriver driver = ((BaseClass) testClass).driver;
@@ -78,14 +77,14 @@ public class ItestListener extends BaseClass implements ITestListener {
 		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed", ExtentTestManager.getTest()
 				.addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
 
-		//add screenshot to target folder
+		// add screenshot to target folder
 		getScreenshot(iTestResult.getName(), driver);
-		
-		//allure screenshot
-		if(driver instanceof WebDriver) {
+
+		// allure screenshot
+		if (driver instanceof WebDriver) {
 			saveFailureScreenshot(driver);
 		}
-		saveTextLog(getTestMethodName(iTestResult)+"failed screenshot taken");
+		saveTextLog(getTestMethodName(iTestResult) + "failed screenshot taken");
 	}
 
 	@Override
@@ -114,7 +113,5 @@ public class ItestListener extends BaseClass implements ITestListener {
 			e.printStackTrace();
 		}
 		return screenshotPath;
-
 	}
-
 }

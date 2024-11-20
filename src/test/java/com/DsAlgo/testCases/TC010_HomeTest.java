@@ -3,13 +3,10 @@ package com.DsAlgo.testCases;
 import java.io.IOException;
 
 import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import com.DsAlgo.pageObjects.HomePage;
 import com.DsAlgo.pageObjects.LoginPage;
 import com.DsAlgo.testBase.BaseClass;
@@ -17,8 +14,6 @@ import com.DsAlgo.utilities.ConfigFileReader;
 import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
-
-
 
 public class TC010_HomeTest extends BaseClass {
 
@@ -56,7 +51,6 @@ public class TC010_HomeTest extends BaseClass {
 	}
 
 	@Test()
-
 	public void ValidateHomePageLogo() {
 		homeObj.numpyLogoclick();
 		Assert.assertEquals(homeObj.getActualLogoMessage(), keyPair.get(getCurrentMethodName()));
@@ -64,7 +58,6 @@ public class TC010_HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 1, dataProvider = "ValidLoginWithHomepageDropdown", dataProviderClass = DataProviders.class)
-
 	public void ValidateHomePageDropdownList(String dropdownListNames, String expectedMessage) {
 
 		homeObj.clickHomeDropdown(dropdownListNames);
@@ -73,7 +66,6 @@ public class TC010_HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 2, dataProvider = "ValidHomepageGetStarted", dataProviderClass = DataProviders.class)
-
 	public void ValidateHomePageAllGetStartedButton(String getStartedNames, String expectedMessage) {
 		homeObj.clickGetStarted(getStartedNames);
 		Assert.assertEquals(homeObj.getActualTitle(), expectedMessage);
@@ -81,7 +73,6 @@ public class TC010_HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 3)
-
 	public void ValidateHomePageAccountholderName() {
 		System.out.println("KeyPair = " + keyPair);
 		homeObj.accountHoldernameclick();
@@ -90,7 +81,6 @@ public class TC010_HomeTest extends BaseClass {
 	}
 
 	@Test(priority = 4)
-
 	public void ValidateSignOut() {
 		System.out.println("KeyPair = " + keyPair);
 		homeObj.clickSignout();

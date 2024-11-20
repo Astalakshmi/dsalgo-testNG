@@ -15,23 +15,24 @@ import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 
-public class TC007_QueueTest extends BaseClass{
-	HomePage homeObj ;
+public class TC007_QueueTest extends BaseClass {
+	HomePage homeObj;
 	LoginPage loginObj;
 	QueuePage queueObj;
-	String username ,password;
-	Map<String,String> keyPair;
+	String username, password;
+	Map<String, String> keyPair;
 	ExcelFileReader excelFileReader = new ExcelFileReader(ConfigFileReader.getInstance().getExcelPath());
+
 	@BeforeClass
 	public void excelLoginData() throws IOException {
-		 username = excelFileReader.getCellData("LoginCredentials", 1, 0);
-		 password = excelFileReader.getCellData("LoginCredentials", 1, 1);
-		 keyPair = excelFileReader.getKeyPair("QueuePage");
+		username = excelFileReader.getCellData("LoginCredentials", 1, 0);
+		password = excelFileReader.getCellData("LoginCredentials", 1, 1);
+		keyPair = excelFileReader.getKeyPair("QueuePage");
 	}
-	
-	@BeforeMethod	
-	public void ExcelReadingdata(){
-				 		    	
+
+	@BeforeMethod
+	public void ExcelReadingdata() {
+
 		homeObj = new HomePage(driver);
 		homeObj.getStartedhomeclick();
 		LoginPage loginObj = new LoginPage(driver);
@@ -44,54 +45,48 @@ public class TC007_QueueTest extends BaseClass{
 			loginObj.setLoginPassword(password);
 			loginObj.loginBtnclick();
 		}
-		queueObj= new QueuePage(driver);
+		queueObj = new QueuePage(driver);
 		queueObj.clickQueueStarted();
 	}
-	
-	
+
 	private String getCurrentMethodName() {
 		return StackWalker.getInstance().walk(s -> s.skip(1).findFirst()).get().getMethodName();
 	}
-	
+
 	@Test()
 	public void ValidateQueueGetStarted() {
 
 		Assert.assertEquals(queueObj.getActualTitle(), keyPair.get(getCurrentMethodName()));
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
-		
-	@Test(priority=1,dataProvider = "ValidateQueueTopicLink", dataProviderClass = DataProviders.class)
+
+	@Test(priority = 1, dataProvider = "ValidateQueueTopicLink", dataProviderClass = DataProviders.class)
 	public void ValidateQueuePageAllLinks(String linkNames, String expectedMessage) {
-		
-		
 		queueObj.clickTopicLink(linkNames);
-		
 		Assert.assertEquals(queueObj.getActualTitle(), expectedMessage);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
-	
-	@Test(priority = 2,dataProvider = "ValidateQueueTopicLinkTryHere", dataProviderClass = DataProviders.class)
-	public void ValidateQueueTryHere(String linkNames,String TryHereExpectedOutput) {
-		
+
+	@Test(priority = 2, dataProvider = "ValidateQueueTopicLinkTryHere", dataProviderClass = DataProviders.class)
+	public void ValidateQueueTryHere(String linkNames, String TryHereExpectedOutput) {
 		queueObj.clickTopicLink(linkNames);
 		queueObj.clickQueueInPythonTryHere();
 		Assert.assertEquals(queueObj.getActualTitle(), TryHereExpectedOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-
 	}
-	@Test(priority = 3,dataProvider = "ValidateQueueTopicLinkTryEditorPositive", dataProviderClass = DataProviders.class)
-	public void ValidateQueueTryEditor(String linkNames,String positiveFirstInput,String positiveFirstOutput) {
+
+	@Test(priority = 3, dataProvider = "ValidateQueueTopicLinkTryEditorPositive", dataProviderClass = DataProviders.class)
+	public void ValidateQueueTryEditor(String linkNames, String positiveFirstInput, String positiveFirstOutput) {
 		queueObj.clickTopicLink(linkNames);
 		queueObj.clickQueueInPythonTryHere();
 		queueObj.setCodePositive(positiveFirstInput);
 		queueObj.clickRunBtn();
-		
 		Assert.assertEquals(queueObj.getOutput(), positiveFirstOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
-	
-	@Test(priority = 4,dataProvider = "ValidateQueueTopicLinkTryEditorNegative", dataProviderClass = DataProviders.class)
-	public void ValidateQueueTryEditorNegative(String linkNames,String negativeInput,String negativeOutput) {
+
+	@Test(priority = 4, dataProvider = "ValidateQueueTopicLinkTryEditorNegative", dataProviderClass = DataProviders.class)
+	public void ValidateQueueTryEditorNegative(String linkNames, String negativeInput, String negativeOutput) {
 		queueObj.clickTopicLink(linkNames);
 		queueObj.clickQueueInPythonTryHere();
 		queueObj.setCodePositive(negativeInput);
@@ -100,7 +95,7 @@ public class TC007_QueueTest extends BaseClass{
 		driver.switchTo().alert().accept();
 		Assert.assertEquals(actualError, negativeOutput);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
-		
+
 	}
 
 	@Test(priority = 5, dataProvider = "ValidateQueuePracticeQuestions", dataProviderClass = DataProviders.class)
