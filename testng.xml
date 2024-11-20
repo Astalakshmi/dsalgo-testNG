@@ -22,7 +22,7 @@
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 
 		</classes>
-	</test> <!-- Test 
+	</test> 
 
 	<test name="FirefoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
@@ -58,6 +58,6 @@
 
 
 		</classes>
-	</test> -->
+	</test>
 	
 </suite> <!-- Suite -->
