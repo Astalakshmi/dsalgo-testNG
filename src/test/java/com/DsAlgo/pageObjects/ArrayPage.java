@@ -2,7 +2,6 @@ package com.DsAlgo.pageObjects;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.DsAlgo.utilities.CommonUtils;
 
 public class ArrayPage {
@@ -101,8 +99,6 @@ public String landArrPQ4_TryEditorPage() {
 	return textSearch;
 }
 
-
-
 public void clickPracticeQuestion(String question) {
 switch (question) {
 	
@@ -164,10 +160,8 @@ public void enterCodePractice(String code) {
 			tryHereEditor.sendKeys(str1[i]);
 			
 			tryHereEditor.sendKeys(Keys.ENTER);
-			
 		}
 	}
-	
 }
 
 public void clickTryHereRunBtn() {
@@ -227,5 +221,4 @@ public ArrayPage(WebDriver driver) {
 	this.driver=driver;
 	PageFactory.initElements( driver,this);
 }
-
 }

@@ -75,7 +75,6 @@ public class TC004_ArrayTest extends BaseClass {
 	public void ValidateArrayTryHere(String linkNames, String expectedMessage) {
 		arrayObj.clickTopicLink(linkNames);
 		arrayObj.clickArrTryHereBtn();
-		;
 		Assert.assertEquals(arrayObj.getActualTitle(), expectedMessage);
 		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}

@@ -73,7 +73,7 @@ public class TC005_LinkedListTest extends BaseClass {
 	public void ValidateLinkedListPageAllLinks(String linkNames, String expectedMessage) {
 		linkedlistObject.clickTopicLink(linkNames);
 		Assert.assertEquals(linkedlistObject.getActualTitle(), expectedMessage);
-		// LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
+		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
 	@Test(priority = 2, dataProvider = "ValidateLinkedListTopicLinkTryHere", dataProviderClass = DataProviders.class)
@@ -81,7 +81,7 @@ public class TC005_LinkedListTest extends BaseClass {
 		linkedlistObject.clickTopicLink(linkNames);
 		linkedlistObject.clicktryEditor();
 		Assert.assertEquals(linkedlistObject.getActualTitle(), expectedMessage);
-		// LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
+		LoggerLoad.info("You are viewing the " + driver.getTitle() + " page.");
 	}
 
 	@Test(priority = 3, dataProvider = "LinkedListTopicLinkTryEditorValidCode", dataProviderClass = DataProviders.class)
