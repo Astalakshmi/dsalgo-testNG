@@ -22,7 +22,7 @@
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 
 		</classes>
-	</test> <!-- Test -->
+	</test> <!-- Test 
 
 	<test name="FirefoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
@@ -40,7 +40,7 @@
 
 
 		</classes>
-	</test> <!-- Test -->
+	</test> 
 	
 	<test name="EdgeTest">
 		<parameter name="browser" value="Edge"></parameter>
@@ -54,10 +54,10 @@
 			<class name="com.DsAlgo.testCases.TC007_QueueTest" />
 			<class name="com.DsAlgo.testCases.TC008_TreeTest" />
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
-			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
+			<class name="com.DsAlgo.testCases.TC010_HomeTest" /> 
 
 
 		</classes>
-	</test> <!-- Test -->
+	</test> -->
 	
 </suite> <!-- Suite -->
