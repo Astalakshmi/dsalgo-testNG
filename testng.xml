@@ -20,8 +20,12 @@
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 		</classes>
+
 	</test> <!-- Test -->
 	
+ 
+
+
 	<test name="FirefoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
 		<classes>
@@ -36,6 +40,7 @@
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 		</classes>
+
 	</test> <!-- Test -->
 
 	<test name="EdgeTest">
