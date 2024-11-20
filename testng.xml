@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" thread-count="5" parallel="tests">
-	<!---<test thread-count="5" name="Test" /> -->
+
 	<listeners>
 		<listener class-name="com.DsAlgo.utilities.ItestListener" />
-		<listener class-name="com.DsAlgo.utilities.RetryListener"/> 
+		<listener class-name="com.DsAlgo.utilities.RetryListener" />
 	</listeners>
+	
 	<test name="ChromeTest">
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
@@ -20,11 +21,7 @@
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 		</classes>
-
 	</test> <!-- Test -->
-	
- 
-
 
 	<test name="FirefoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
@@ -40,7 +37,6 @@
 			<class name="com.DsAlgo.testCases.TC009_GraphTest" />
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 		</classes>
-
 	</test> <!-- Test -->
 
 	<test name="EdgeTest">
@@ -58,4 +54,5 @@
 			<class name="com.DsAlgo.testCases.TC010_HomeTest" />
 		</classes>
 	</test> <!-- Test -->
+	
 </suite> <!-- Suite -->
