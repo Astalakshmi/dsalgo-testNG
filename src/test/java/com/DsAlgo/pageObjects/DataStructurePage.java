@@ -78,11 +78,9 @@ public class DataStructurePage {
 		practice_ques.click();
 	}
 
-	public void getPracticeQuestionscount() {
-		int practiceCount = practiceQuestions.size();
-		if (practiceCount < 1) {
-			Assert.fail("No questions found");
-		}
+	public int getPracticeQuestionscount() {
+		return practiceQuestions.size();
+		
 	}
 
 	public String getActualTitle() {
