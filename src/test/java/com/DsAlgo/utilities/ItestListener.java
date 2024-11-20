@@ -1,7 +1,6 @@
 package com.DsAlgo.utilities;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -13,16 +12,15 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import com.DsAlgo.testBase.BaseClass;
 import com.aventstack.extentreports.Status;
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 
-import java.io.ByteArrayInputStream;
 
 public class ItestListener extends BaseClass implements ITestListener {
 	private static String getTestMethodName(ITestResult iTestResult) {
 		return iTestResult.getMethod().getConstructorOrMethod().getName();
 	}
 	
+	//for allure report
 	@Attachment
 	public byte[] saveFailureScreenshot(WebDriver driver) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -79,18 +77,11 @@ public class ItestListener extends BaseClass implements ITestListener {
 		// ExtentReports log and screenshot operations for failed tests.
 		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed", ExtentTestManager.getTest()
 				.addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
-        //Screenshot for Allure
-//		File screenshotAsFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//		try {
-//			
-//			Allure.addAttachment("screenshot", FileUtils.openInputStream(screenshotAsFile));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+
 		//add screenshot to target folder
 		getScreenshot(iTestResult.getName(), driver);
 		
-		
+		//allure screenshot
 		if(driver instanceof WebDriver) {
 			saveFailureScreenshot(driver);
 		}
