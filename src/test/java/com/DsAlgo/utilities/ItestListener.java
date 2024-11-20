@@ -14,10 +14,23 @@ import org.testng.Reporter;
 import com.DsAlgo.testBase.BaseClass;
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
+
+import java.io.ByteArrayInputStream;
 
 public class ItestListener extends BaseClass implements ITestListener {
 	private static String getTestMethodName(ITestResult iTestResult) {
 		return iTestResult.getMethod().getConstructorOrMethod().getName();
+	}
+	
+	@Attachment
+	public byte[] saveFailureScreenshot(WebDriver driver) {
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	}
+	
+	@Attachment(value= "{0}", type="text/plain")
+	public static String saveTextLog(String message) {
+		return message;
 	}
 
 	@Override
@@ -67,14 +80,21 @@ public class ItestListener extends BaseClass implements ITestListener {
 		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed", ExtentTestManager.getTest()
 				.addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
         //Screenshot for Allure
-		File screenshotAsFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		try {
-			Allure.addAttachment("screenshot", FileUtils.openInputStream(screenshotAsFile));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		File screenshotAsFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//		try {
+//			
+//			Allure.addAttachment("screenshot", FileUtils.openInputStream(screenshotAsFile));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		//add screenshot to target folder
 		getScreenshot(iTestResult.getName(), driver);
+		
+		
+		if(driver instanceof WebDriver) {
+			saveFailureScreenshot(driver);
+		}
+		saveTextLog(getTestMethodName(iTestResult)+"failed screenshot taken");
 	}
 
 	@Override
