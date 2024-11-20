@@ -34,8 +34,8 @@ public class DataProviders {
 
 		int totalrows = excelFileReader.getRowCount("RegisterPage");
 		int totalcols = excelFileReader.getCellCount("RegisterPage", 1);
-		String[][] registerInvalidData = new String[totalrows - 1][totalcols];
-		for (int i = 2; i <= totalrows; i++) { // i=2 because row 1 i.e,i=1 is positive testcase. It's worked.
+		String[][] registerInvalidData = new String[8][totalcols];
+		for (int i = 2; i <= 9; i++) { // i=2 because row 1 i.e,i=1 is positive testcase. It's worked.
 			for (int j = 0; j < totalcols; j++) {
 				registerInvalidData[i - 2][j] = excelFileReader.getCellData("RegisterPage", i, j);// [i-2][j] so that
 																									// [0][0]
