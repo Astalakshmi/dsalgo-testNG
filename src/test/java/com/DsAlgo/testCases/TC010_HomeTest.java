@@ -18,7 +18,7 @@ import com.DsAlgo.utilities.DataProviders;
 import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 
-@Listeners(com.DsAlgo.utilities.ItestListener.class)
+
 
 public class TC010_HomeTest extends BaseClass {
 

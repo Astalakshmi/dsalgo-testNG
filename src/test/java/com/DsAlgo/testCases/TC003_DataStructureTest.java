@@ -21,7 +21,6 @@ import com.DsAlgo.utilities.LoggerLoad;
 import com.DsAlgo.utilities.RetryAnalyzer;
 
 
-@Listeners(com.DsAlgo.utilities.ItestListener.class)
 
 public class TC003_DataStructureTest extends BaseClass {
 
@@ -127,6 +126,9 @@ public class TC003_DataStructureTest extends BaseClass {
 	public void ValidatePraticeQuestions() {
 		datastructureObj.timeComplexclick();
 		datastructureObj.pracQuesclick();
-		datastructureObj.getPracticeQuestionscount();// Assert
+		int practiceCount = datastructureObj.getPracticeQuestionscount();
+		if (practiceCount < 1) {
+			Assert.fail("No questions found");
+		}
 	}
 }

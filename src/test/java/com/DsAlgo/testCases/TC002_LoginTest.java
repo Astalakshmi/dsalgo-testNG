@@ -19,7 +19,7 @@ import com.DsAlgo.utilities.ExcelFileReader;
 import com.DsAlgo.utilities.LoggerLoad;
 
 
-@Listeners(com.DsAlgo.utilities.ItestListener.class)
+
 
 public class TC002_LoginTest extends BaseClass {
 	ConfigFileReader configFileReader = ConfigFileReader.getInstance();
