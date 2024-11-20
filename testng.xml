@@ -4,19 +4,21 @@
  <!---<test thread-count="5" name="Test" /> --> 
   <listeners>
         <listener class-name="com.DsAlgo.utilities.ItestListener"/>
-      <!--  <listener class-name="com.DsAlgo.utilities.AnnotationTransformer"/> -->
+      <!--  <listener class-name="com.DsAlgo.utilities.RetryListener"/> -->
     </listeners>
   <test name="ChromeTest" >
   	<parameter name="browser" value="Chrome"></parameter>
     <classes>
-      
-    
-     <!-- <class name="com.DsAlgo.testCases.TC001_RegisterTest"/> -->
+	  <class name="com.DsAlgo.testCases.TC001_RegisterTest"/>
+      <class name="com.DsAlgo.testCases.TC002_LoginTest"/>
+      <class name="com.DsAlgo.testCases.TC003_DataStructureTest"/>
+      <class name="com.DsAlgo.testCases.TC004_ArrayTest"/>
       <class name="com.DsAlgo.testCases.TC005_LinkedListTest"/>
-       <class name="com.DsAlgo.testCases.TC006_StackTest"/>
-       <class name="com.DsAlgo.testCases.TC003_ArrayTest"/>
-      
-         
+      <class name="com.DsAlgo.testCases.TC006_StackTest"/>
+      <class name="com.DsAlgo.testCases.TC007_QueueTest"/>
+      <class name="com.DsAlgo.testCases.TC008_TreeTest"/>
+      <class name="com.DsAlgo.testCases.TC009_GraphTest"/>
+      <class name="com.DsAlgo.testCases.TC010_HomeTest"/>      
     </classes>
   </test> <!-- Test
 
